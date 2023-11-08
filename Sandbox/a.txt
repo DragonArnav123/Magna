@@ -1,0 +1,18 @@
+# 1 "src/Main.cpp"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "src/Main.cpp"
+# 1 "src/../../Engine/include/Engine.hpp" 1
+       
+
+# 1 "src/../../Engine/include/../src/trial.hpp" 1
+       
+
+int add_smth(int i, int j);
+# 4 "src/../../Engine/include/Engine.hpp" 2
+# 2 "src/Main.cpp" 2
+
+int main(int argc, const char **argv) {
+ Log("Hello, World");
+ return (0);
+}

@@ -7,12 +7,14 @@ BIN		   := .\bin
 SRC		   := .\src
 LIB        := .\dependencies
 OBJ		   := $(BIN)\Obj
+INC        := .\include
 BINLIB     := $(BIN)\Lib
 BINARIES   := $(BIN)\Binaries
 
 INCLUDE     = -I"$(LIB)/glfw/include"
 INCLUDE    += -I"$(LIB)/glew_/include"
 INCLUDE	   += -I"$(LIB)/glm"
+INCLUDE    += -I"$(INC)"
 
 LIBGLFWDIR := $(LIB)\glfw
 LIBGLEWDIR := $(LIB)\glew_
@@ -33,6 +35,7 @@ OBJS		= $(patsubst $(SRC)/%.cpp,$(OBJ)/%.o,$(SRCS))
 HEADERS    := $(wildcard $(SRC)/*.hpp)
 EXE	       := $(BIN)\Out.exe
 ENGLIB     := $(BINARIES)\libEngine.a
+PCH 	   := $(INC)\std.hpp
 
 .PHONY: all run clean
 
@@ -48,16 +51,19 @@ $(SRC)/%.cpp:
 	@if 0
 
 $(OBJ)/%.o: $(SRC)/%.cpp | $(OBJ)
-	@echo [BUILD] Building $@
+	@echo [ENGINE] Building $@
 	@if not exist $@ echo > $@
 	$(CC) $(CFLAGS) $(DEFINES) -c $^ -o $@
 
-$(ENGLIB): build-lib $(OBJS) | $(BIN)
-	@echo [BUILD] Linking CXX Static Library 
+$(ENGLIB): build-lib $(OBJS) $(PCH) | $(BIN)
+	@echo [ENGINE] Linking CXX Static Library 
 	ar -qc $(ENGLIB) $(OBJS) "$(OBJ)\glfw\*" "$(OBJ)\glew\*"
-	@echo [BUILD] Done
+	@echo [ENGINE] Done
 
-#$(CC) $(OBJS) -shared $(LFLAGS) -o $(ENGLIB) -Wl,--whole-archive $(LIBRARIES)  -Wl,--no-whole-archive
+$(PCH):
+	@echo [ENGINE] Rebuilding PCH ...
+	$(CC) -c $(PCH) -o $(INC)\std.hpp.gch
+
 .SILENT: build-lib
 build-lib: lib-glfw lib-glew
 	@if not exist $(OBJ)\glfw\ ($(MKDIR) $(OBJ)\glfw\)
@@ -66,13 +72,13 @@ build-lib: lib-glfw lib-glew
 	@$(shell cd $(OBJ)\glew\ && ar -x ..\..\lib\glew\lib\libglew32.a)
 
 lib-glfw: | $(BINLIB)
-	@echo [BUILD] Building target glfw ...
+	@echo [ENGINE] Building target glfw ...
 	@if not exist $(BINLIB)\glfw ($(MKDIR) "$(BINLIB)/glfw" && cmake -S $(LIBGLFWDIR) -B $(BINLIB)/glfw -G "MinGW Makefiles" -DGLFW_BUILD_DOCS=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_EXAMPLES=OFF)
 	$(MAKE) -C "$(BINLIB)/glfw" --no-print-directory
 # Target Examples off 
 
 lib-glew: | $(BINLIB)
-	@echo [BUILD] Building target glew...
+	@echo [ENGINE] Building target glew...
 	@if not exist $(BINLIB)\glew ($(MKDIR) "$(BINLIB)/glew" && cmake -S $(LIBGLEWDIR)/build/cmake -B $(BINLIB)/glew -G "MinGW Makefiles" -DBUILD_UTILS=OFF)
 	$(MAKE) -C "$(BINLIB)/glew/" --no-print-directory
 # Target Examples off 

@@ -1,0 +1,99 @@
+# Find out how to use clang++
+CC		   := g++ 
+MKDIR	   := md 
+RMDIR	   := rd /S /Q
+
+BIN		   := .\bin
+SRC		   := .\src
+LIB        := .\dependencies
+OBJ		   := $(BIN)\Obj
+INC        := .\include
+BINLIB     := $(BIN)\Lib
+BINARIES   := $(BIN)\Binaries
+
+INCLUDE     = -I"$(LIB)/glfw/include"
+INCLUDE    += -I"$(LIB)/glew/include"
+INCLUDE	   += -I"$(LIB)/glm"
+INCLUDE    += -I"dependencies/spdlog/include"
+INCLUDE    += -I"$(INC)"
+
+LIBGLFWDIR := $(LIB)\glfw
+LIBGLEWDIR := $(LIB)\glew
+LIBSLOGDIR := $(LIB)\spdlog
+
+CFLAGS      = -std=c++2a -g -ggdb
+CFLAGS	   += $(INCLUDE)
+LFLAGS	    = -L"$(BINLIB)/glfw/src" 
+LFLAGS     += -L"$(BINLIB)/glew/lib"
+
+LIBRARIES   = -lglfw3 -lglew32
+LIBRARIES  += -lkernel32 -lopengl32 -lgdi32 -luser32
+
+# @TODO: defines for dirs
+DEFINES		= -DDEBUG -DWINDOWS -DGLEW_STATIC
+
+SRCS	   := $(wildcard $(SRC)/*.cpp)
+OBJS		= $(patsubst $(SRC)/%.cpp,$(OBJ)/%.o,$(SRCS))
+HEADERS    := $(wildcard $(SRC)/*.hpp)
+EXE	       := $(BIN)\Out.exe
+ENGLIB     := $(BINARIES)\libEngine.a
+PCH 	   := $(INC)\std.hpp
+
+.PHONY: all run clean
+
+all: make-dir $(ENGLIB)
+
+make-dir: 
+	@if not exist $(BIN)\ ($(MKDIR) $(BIN))
+	@if not exist $(OBJ)\ ($(MKDIR) $(OBJ))
+	@if not exist $(BINLIB)\ ($(MKDIR) $(BINLIB))
+	@if not exist $(BINARIES)\ ($(MKDIR) $(BINARIES))
+
+$(SRC)/%.cpp:
+	@if 0
+
+$(OBJ)/%.o: $(SRC)/%.cpp | $(OBJ)
+	@echo [ENGINE] Building $@
+	@if not exist $@ echo > $@
+	$(CC) $(CFLAGS) $(DEFINES) -c $^ -o $@
+
+$(ENGLIB): build-lib $(OBJS) $(PCH) | $(BIN)
+	@echo [ENGINE] Linking CXX Static Library 
+	ar -qc $(ENGLIB) $(OBJS) "$(OBJ)\glfw\*" "$(OBJ)\glew\*" "$(OBJ)\spdlog\*"
+	@echo [ENGINE] Done
+
+$(PCH):
+	@echo [ENGINE] Rebuilding PCH ...
+	$(CC) -c $(PCH) -o $(INC)\std.hpp.gch
+
+build-lib: lib-glfw  lib-glew lib-spdlog 
+	@if not exist $(OBJ)\glfw\ ($(MKDIR) $(OBJ)\glfw\)
+	@if not exist $(OBJ)\glew\ ($(MKDIR) $(OBJ)\glew\)
+	@if not exist $(OBJ)\spdlog\ ($(MKDIR) $(OBJ)\spdlog\)
+	@$(shell cd $(OBJ)\glfw\ && ar -x ..\..\lib\glfw\src\libglfw3.a)
+	@$(shell cd $(OBJ)\glew\ && ar -x ..\..\lib\glew\lib\libglew32.a)
+	@$(shell cd $(OBJ)\spdlog\ && ar -x ..\..\lib\spdlog\libspdlog.a)
+
+lib-glfw: | $(BINLIB)
+	@echo [ENGINE] Building target glfw ...
+	@if not exist $(BINLIB)\glfw ($(MKDIR) "$(BINLIB)/glfw" && cmake -S $(LIBGLFWDIR) -B $(BINLIB)/glfw -G "MinGW Makefiles" -DGLFW_BUILD_DOCS=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_EXAMPLES=OFF)
+	$(MAKE) -C "$(BINLIB)/glfw" --no-print-directory
+
+lib-glew: | $(BINLIB)
+	@echo [ENGINE] Building target glew ...
+	@if not exist $(BINLIB)\glew ($(MKDIR) "$(BINLIB)/glew" && cmake -S $(LIBGLEWDIR)/build/cmake -B $(BINLIB)/glew -G "MinGW Makefiles" -DBUILD_UTILS=OFF)
+	$(MAKE) -C "$(BINLIB)/glew/" --no-print-directory
+
+lib-spdlog: | $(BINLIB)
+	@echo [ENGINE] Building target spdlog ...
+	@if not exist $(BINLIB)\spdlog ($(MKDIR) "$(BINLIB)/spdlog" && cmake -S $(LIBSLOGDIR)/ -B $(BINLIB)/spdlog -G "MinGW Makefiles" -DSPDLOG_ENABLE_PCH=ON -DSPDLOG_BUILD_EXAMPLE=OFF -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_BENCH=OFF)
+	$(MAKE) -C "$(BINLIB)/spdlog/" --no-print-directory
+
+run: $(EXE)
+	@$<
+
+clean:
+	$(RMDIR) $(BIN)
+
+debugger: $(EXE)
+	ggdb $<

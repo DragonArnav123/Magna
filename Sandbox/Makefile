@@ -1,22 +1,25 @@
 CC = g++
 MKDIR = md
 RMDIR = rd /S /Q
+CLRSCR = cls 
 BIN = .\bin
 SRC = .\src
 OBJ = $(BIN)\Obj
 EXE = $(BIN)\Out.exe
-ENGINEDIR = ../Engine
+ENGINEDIR = ..\Engine
 INCLUDE = -I$(ENGINEDIR)/include
+INCLUDE += -I$(ENGINEDIR)/dependencies/spdlog/include
 LFLAGS = -L$(ENGINEDIR)/bin/Binaries
-LIBRARIES = -lEngine -lkernel32 -lgdi32 -luser32
+LIBRARIES = -lMagna -lkernel32 -lgdi32 -luser32 -lopengl32
 CFLAGS = -std=c++2a -g -ggdb
 CFLAGS += $(INCLUDE)
 DEFINES = -DDEBUG
 SRCS = $(wildcard $(SRC)/*.cpp)
-HEADER = $(widlcard $(SRC)/*.hpp)
+HEADER = $(wildcard $(SRC)/*.hpp)
 OBJS = $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
 
-.PHONY: all clean run
+
+.PHONY: all run clean engine dbg clean-build
 
 all: make-dir $(EXE)
 
@@ -26,8 +29,8 @@ make-dir:
 	if not exist $(OBJ)\ ($(MKDIR) $(OBJ))
 
 $(EXE): $(OBJS) | $(OBJ)
-	@echo [BUILD] Linking CXX Executable
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(LFLAGS) $(LIBRARIES) 
+	@echo [BUILD] Linking CXX Executable ... 
+	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS) $(LIBRARIES) 
 	@echo [BUILD] Done
 
 $(SRC)/%.cpp:
@@ -36,18 +39,22 @@ $(SRC)/%.cpp:
 $(OBJ)/%.o: $(SRC)/%.cpp | $(OBJ)
 	@echo [BUILD] Building $@
 	@if not exist $@ echo > $@
-	$(CC) $(CLFAGS) $(DEFINES) -c $^ -o $@
+	$(CC) $(CFLAGS) $(DEFINES) -c $^ -o $@
 
 clean:
 	$(RMDIR) $(BIN)
 
 run: $(EXE)
+	@echo [BUILD] Deleteting Old Engine Dll File ...
+	@del $(BIN)\libMagna.dll > nul
+	@echo [BUILD] Copying Engine DLL File ...
+	@copy $(ENGINEDIR)\bin\binaries\libMagna.dll $(BIN) > nul
 	$^
 
-.PHONY: engine
 engine:
-	$(MAKE) -C $(ENGINEDIR) --no-print-directory
+	$(MAKE) -C $(ENGINEDIR) --no-print-directory cbuild
 
-.PHONY: dbg
 dbg:
 	@gdb $(EXE)
+
+clean-build: clean all

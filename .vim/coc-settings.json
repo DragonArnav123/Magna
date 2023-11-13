@@ -1,0 +1,8 @@
+{
+	"colors.enable": true,
+	"codeLens.enable": true,
+	"clangd.arguments": ["-std=c++20"],
+	"diagnostic.checkCurrentLine": true,
+	"clangd.fallbackFlags": ["-std=c++20"],
+	"clangd.compilationDatabasePath": "../Engine/compile_commands.json"
+}

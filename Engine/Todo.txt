@@ -1,0 +1,5 @@
+* Add resizable option to window struct
+* Make a log class
+* Setup log defines
+* Setup glm to be a pch
+* Setup compile commands

@@ -1,0 +1,58 @@
+cmake_minimum_required(VERSION 3.10.0)
+
+project(Magna VERSION 1.0.0 DESCRIPTION "Magna Rendering Engine")
+
+find_package(OpenGL REQURIED)
+
+set(BIN_DIR "${CMAKE_SOURCE_DIR}/Bin")
+set(DLL_DIR "${BIN_DIR}/Binaries")
+set(SRC_DIR "${CMAKE_SOURCE_DIR}/src")
+set(INC_DIR "${CMAKE_SOURCE_DIR}/include")
+set(LIB_DIR "${CMAKE_SOURCE_DIR}/libraries")
+set(DEP_DIR "${CMAKE_SOURCE_DIR}/dependencies")
+set(RES_DIR "${SRC_DIR}/res")
+
+set(CMAKE_CXX_FLAGS "-std=c++2a -g -ggdb -Wall")
+
+add_library(glfw SHARED IMPORTED GLOBAL)
+add_library(spdlog SHARED IMPORTED GLOBAL)
+
+set_target_properties(glfw PROPERTIES IMPORTED_IMPLIB "${LIB_DIR}/libglfw3.a")
+set_target_properties(spdlog PROPERTIES IMPORTED_IMPLIB "${LIB_DIR}/libspdlog.a")
+
+add_compile_definitions("-DDEBUG_BUILD -DWINDOWS -DMAGNA_DLL_BUILD -DSOURCE_DIR=\"${SRC_DIR}\" -DINC_DIR=\"$(INC_DIR)\" -DLIB_DIR=\"${LIB_DIR}\" -DRESOURCES_DIR=\"${RES_DIR}\"")
+
+file(GLOB SOURCE_FILES 
+	"${SRC}/*.cpp" 
+	"${SRC}/renderer/*.cpp")
+
+file(GLOB HEADER_FILES 
+	"${SRC}/*.hpp" 
+	"${SRC}/renderer/*.hpp")
+
+set(GLAD_SRC "${DEP_DIR}/glad/src/glad.c")
+
+add_library(Magna SHARED ${SOURCE_FILES})
+
+set_target_properties(Magna PROPERTIES 
+	VERSION ${PROJECT_VERSION} 
+	PUBLIC_HEADER "${INC_DIR}/Magna.hpp")
+
+install(TARGETS Magna
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+target_precompile_headers(Magna
+	PRIVATE	
+	"${SRC_DIR}/std.hpp" 
+	PUBLIC
+	"${SRC_DIR}/math.hpp")
+
+target_include_directories(Magna PRIVATE 
+	"${INC_DIR}" 
+	"${SRC_DIR}"
+	"${OPENGL_INCLUDE_DIR}" 
+	"${DEP_DIR}/glad/include")
+
+target_link_libraries(Magna PUBLIC 
+	 glfw ${OPENGL_LIBRARIES} kernel32 user32 opengl32 gdi32)

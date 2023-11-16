@@ -6,94 +6,136 @@ RMDIR	   := rd /S /Q
 BIN		   := .\bin
 SRC		   := .\src
 LIB        := .\dependencies
+INC  	   := .\include
 OBJ		   := $(BIN)\Obj
-INC        := .\include
 BINLIB     := $(BIN)\Lib
 BINARIES   := $(BIN)\Binaries
 
 INCLUDE     = -I"$(LIB)/glfw/include"
-INCLUDE    += -I"$(LIB)/glew/include"
 INCLUDE	   += -I"$(LIB)/glm"
 INCLUDE    += -I"dependencies/spdlog/include"
-INCLUDE    += -I"$(INC)"
+INCLUDE    += -I"$(GLAD)/include"
+INCLUDE    += -I"$(SRC)"
 
 LIBGLFWDIR := $(LIB)\glfw
-LIBGLEWDIR := $(LIB)\glew
 LIBSLOGDIR := $(LIB)\spdlog
 
 CFLAGS      = -std=c++2a -g -ggdb
 CFLAGS	   += $(INCLUDE)
 LFLAGS	    = -L"$(BINLIB)/glfw/src" 
-LFLAGS     += -L"$(BINLIB)/glew/lib"
+LFLAGS	   += -L"$(BINLIB)/spdlog" 
+LFLAGS 	   += -m32 -static 
 
-LIBRARIES   = -lglfw3 -lglew32
+LIBRARIES   = -lglfw3 -lspdlog
 LIBRARIES  += -lkernel32 -lopengl32 -lgdi32 -luser32
 
 # @TODO: defines for dirs
-DEFINES		= -DDEBUG -DWINDOWS -DGLEW_STATIC
+DEFINES		= -DDEBUG_BUILD -DWINDOWS  
 
 SRCS	   := $(wildcard $(SRC)/*.cpp)
-OBJS		= $(patsubst $(SRC)/%.cpp,$(OBJ)/%.o,$(SRCS))
+SRCSREND   := $(wildcard $(SRC)/renderer/*.cpp)
+OBJS	   := $(patsubst $(SRC)/%.cpp,$(OBJ)/%.o,$(SRCS))
+OBJSREND   := $(patsubst $(SRC)/renderer/%.cpp, $(OBJ)/renderer/%.o, $(SRCSREND))
+ALLOBJS     = $(OBJS)
+ALLOBJS    += $(OBJSREND)
 HEADERS    := $(wildcard $(SRC)/*.hpp)
 EXE	       := $(BIN)\Out.exe
-ENGLIB     := $(BINARIES)\libEngine.a
-PCH 	   := $(INC)\std.hpp
+ENGLIBSTAT := $(BINARIES)\libEngine.a
+ENGLIBSHAR := $(BINARIES)\libMagna.dll
+STDPCH 	   := $(INC)\std.hpp.gch
+MATHPCH    := $(INC)\math.hpp.gch
+ENGPCH 	   := $(INC)\EnginePCH.hpp.gch
+GLAD       := $(LIB)\glad
+GLADSRC    := $(GLAD)\src\glad.c
+OPENGL     := $(OBJ)\glad.o
 
-.PHONY: all run clean
+.PHONY: all-scratch all run clean cbuild
 
-all: make-dir $(ENGLIB)
+all: make-dir $(ENGLIBSHAR)
+
+all-scratch: clean make-dir dependencies all
 
 make-dir: 
 	@if not exist $(BIN)\ ($(MKDIR) $(BIN))
 	@if not exist $(OBJ)\ ($(MKDIR) $(OBJ))
 	@if not exist $(BINLIB)\ ($(MKDIR) $(BINLIB))
+	@if not exist $(BINLIB)\glfw\ ($(MKDIR) $(BINLIB)\glfw\)
+	@if not exist $(BINLIB)\spdlog\ ($(MKDIR) $(BINLIB)\spdlog\)
 	@if not exist $(BINARIES)\ ($(MKDIR) $(BINARIES))
+	@if not exist $(OBJ)\renderer\ ($(MKDIR) $(OBJ)\renderer\)
 
 $(SRC)/%.cpp:
 	@if 0
 
 $(OBJ)/%.o: $(SRC)/%.cpp | $(OBJ)
-	@echo [ENGINE] Building $@
+	@echo [MAGNA] Building $@
 	@if not exist $@ echo > $@
 	$(CC) $(CFLAGS) $(DEFINES) -c $^ -o $@
 
-$(ENGLIB): build-lib $(OBJS) $(PCH) | $(BIN)
-	@echo [ENGINE] Linking CXX Static Library 
-	ar -qc $(ENGLIB) $(OBJS) "$(OBJ)\glfw\*" "$(OBJ)\glew\*" "$(OBJ)\spdlog\*"
-	@echo [ENGINE] Done
+$(OBJ)/renderer/%.o: $(SRC)/renderer/%.cpp | $(OBJ)
+	@echo [MAGNA] Building $@
+	@if not exist $@ echo > $@
+	$(CC) $(CFLAGS) $(DEFINES) -c $^ -o $@
 
-$(PCH):
-	@echo [ENGINE] Rebuilding PCH ...
-	$(CC) -c $(PCH) -o $(INC)\std.hpp.gch
+$(ENGLIBSHAR): $(STDPCH) $(MATHPCH) $(ENGPCH) $(ALLOBJS) $(OPENGL) | $(BIN) $(OBJ)  dependencies
+	@echo [MAGNA] Creating CXX Shared Library 
+	@echo [MAGNA] Linking Source  $(SRCS) $(SRCSREND)
+	$(CC) -shared -o $(ENGLIBSHAR) $(ALLOBJS) $(OPENGL) $(LFLAGS) $(LIBRARIES)
+	@echo [MAGNA] Done
 
-build-lib: lib-glfw  lib-glew lib-spdlog 
-	@if not exist $(OBJ)\glfw\ ($(MKDIR) $(OBJ)\glfw\)
-	@if not exist $(OBJ)\glew\ ($(MKDIR) $(OBJ)\glew\)
-	@if not exist $(OBJ)\spdlog\ ($(MKDIR) $(OBJ)\spdlog\)
-	@$(shell cd $(OBJ)\glfw\ && ar -x ..\..\lib\glfw\src\libglfw3.a)
-	@$(shell cd $(OBJ)\glew\ && ar -x ..\..\lib\glew\lib\libglew32.a)
-	@$(shell cd $(OBJ)\spdlog\ && ar -x ..\..\lib\spdlog\libspdlog.a)
+$(STDPCH): $(SRC)\std.hpp
+	@echo [MAGNA] Rebuilding STDPCH ...
+	$(CC) -c $^ -o $@
 
-lib-glfw: | $(BINLIB)
-	@echo [ENGINE] Building target glfw ...
-	@if not exist $(BINLIB)\glfw ($(MKDIR) "$(BINLIB)/glfw" && cmake -S $(LIBGLFWDIR) -B $(BINLIB)/glfw -G "MinGW Makefiles" -DGLFW_BUILD_DOCS=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_EXAMPLES=OFF)
-	$(MAKE) -C "$(BINLIB)/glfw" --no-print-directory
+$(MATHPCH): $(SRC)\math.hpp
+	@echo [MAGNA] Rebuilding MATHPCH ...
+	$(CC) -c $^ -o $@
 
-lib-glew: | $(BINLIB)
-	@echo [ENGINE] Building target glew ...
-	@if not exist $(BINLIB)\glew ($(MKDIR) "$(BINLIB)/glew" && cmake -S $(LIBGLEWDIR)/build/cmake -B $(BINLIB)/glew -G "MinGW Makefiles" -DBUILD_UTILS=OFF)
-	$(MAKE) -C "$(BINLIB)/glew/" --no-print-directory
+$(ENGPCH): $(INC)\EnginePCH.hpp
+	@echo [MAGNA] Rebuilding ENGPCH ...
+	$(CC) -c $^ -o $@ $(CFLAGS)
 
-lib-spdlog: | $(BINLIB)
-	@echo [ENGINE] Building target spdlog ...
-	@if not exist $(BINLIB)\spdlog ($(MKDIR) "$(BINLIB)/spdlog" && cmake -S $(LIBSLOGDIR)/ -B $(BINLIB)/spdlog -G "MinGW Makefiles" -DSPDLOG_ENABLE_PCH=ON -DSPDLOG_BUILD_EXAMPLE=OFF -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_BENCH=OFF)
-	$(MAKE) -C "$(BINLIB)/spdlog/" --no-print-directory
+$(GLADSRC):
+
+$(OPENGL): $(GLADSRC) | $(OBJ)
+	@echo [Magna] Building OpenGL API File : $@
+	@if not exist $@ echo > $@
+	$(CC) $(CFLAGS) $(DEFINES) -o $@ -c $^
+
+dependencies: $(BINLIB)/glfw/src/libglfw3.a $(BINLIB)/spdlog/libspdlog.a
+
+$(BINLIB)/glfw/src/libglfw3.a: | $(BINLIB)
+	@echo [MAGNA] Building target glfw ...
+	@if not exist $(BINLIB)\glfw ($(MKDIR) "$(BINLIB)/glfw") 
+	cmake -S $(LIBGLFWDIR) -B $(BINLIB)/glfw -G "MinGW Makefiles" -DGLFW_BUILD_DOCS=OFF -DGLFW_BUILD_TESTS=OFF -DGLFW_BUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=OFF
+	$(MAKE) -C "$(BINLIB)/glfw" --no-print-directory -j 4
+
+$(BINLIB)/spdlog/libspdlog.a: | $(BINLIB)
+	@echo [MAGNA] Building target spdlog ...
+	@if not exist $(BINLIB)\spdlog ($(MKDIR) "$(BINLIB)/spdlog")
+	cmake -S $(LIBSLOGDIR)/ -B $(BINLIB)/spdlog -G "MinGW Makefiles" -DSPDLOG_ENABLE_PCH=ON -DSPDLOG_BUILD_EXAMPLE=OFF -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_BENCH=OFF
+	$(MAKE) -C "$(BINLIB)/spdlog/" --no-print-directory -j 4
+
+$(BIN):
+	@if not exist $(BIN)\ ($(MKDIR) $(BIN))
+
+$(OBJ): | $(BIN)
+	@if not exist $(OBJ)\ ($(MKDIR) $(OBJ))
+
+$(LIB): | $(BIN)
+	@if not exist $(BIN)\ ($(MKDIR) $(OBJ))
+
+$(OBJ)/renderer/: | $(OBJ)
+	@if not exist $(OBJ)\renderer\ ($(MKDIR) $(OBJ)\renderer\)
 
 run: $(EXE)
 	@$<
 
 clean:
 	$(RMDIR) $(BIN)
+# @TODO: Figure out a way for us to not need to make libraries all the time
 
 debugger: $(EXE)
-	ggdb $<
+	gdb $<
+
+cbuild: clean all

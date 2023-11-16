@@ -1,17 +1,16 @@
-#define MAGNA_IMPLEMENTATION
-#include "window.hpp"
+#define MAGNA_DLL_BUILD
 
+#include "window.hpp"
+#include "../Log.hpp"
 #include <gllibs.hpp>
 #include <std.hpp>
 #include <GLFW/glfw3.h>
 
-void __declspec(__dllexport__) Log(const char *a) {
-	spdlog::log(spdlog::level::info, a);
-}
 
 namespace Magna { namespace Window {
+using namespace Math;
 
-__declspec(__dllexport__) Window::Window(uint16 width, uint16 height, string title)
+MAGNA_API Window::Window(uint16 width, uint16 height, string title)
 	: width(width), height(height), title(title) {
 	
 	_win = 
@@ -19,16 +18,16 @@ __declspec(__dllexport__) Window::Window(uint16 width, uint16 height, string tit
 				(int32) width,
 				(int32) height,
 				title.c_str(), NULL, NULL);
-	spdlog::log(spdlog::level::debug, "In WINDOW!");
+	MG_CLIENT_DEBUG("Created Window at {0}", (void*)_win)
 	glfwSetWindowUserPointer(_win, this);
 }
 
-__declspec(__dllexport__) Window::~Window() {
+MAGNA_API Window::~Window() {
 	glfwSetWindowShouldClose(_win, GLFW_TRUE);
 	glfwDestroyWindow(_win);
 }
 
-void API Window::initialize(
+void MAGNA_API Window::initialize(
 		int32 opengl_major, int32 opengl_minor) {
 
 	if (!glfwInit()) {
@@ -41,7 +40,11 @@ void API Window::initialize(
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
-void API Window::resize(uint16 width, uint16 height) {
+void MAGNA_API Window::terminate() {
+	glfwTerminate();
+}
+
+void MAGNA_API Window::resize(uint16 width, uint16 height) {
 	auto win_ptr =
 		glfwGetWindowMonitor(_win);
 
@@ -51,30 +54,30 @@ void API Window::resize(uint16 width, uint16 height) {
 
 }
 
-void API Window::clear() {
+void MAGNA_API Window::clear() {
 	glClearColor(
 		_clr_color.x, _clr_color.y, _clr_color.z, _clr_color.w);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void API Window::close() {
+void MAGNA_API Window::close() {
 	glfwSetWindowShouldClose(_win, GLFW_TRUE);
 }
 
-void API Window::open() {
+void MAGNA_API Window::open() {
 	glfwSetWindowShouldClose(_win, GLFW_FALSE);
 }
 
-void API Window::set_title(string title) {
+void MAGNA_API Window::set_title(string title) {
 	this->title = title;
 	glfwSetWindowTitle(_win, title.c_str());
 }
 
-void API Window::update_window_pos(ivec2 pos) {
+void MAGNA_API Window::update_window_pos(ivec2 pos) {
 	glfwSetWindowPos(_win, pos.x, pos.y);
 }
 
-void API Window::center_window_on_screen() {
+void MAGNA_API Window::center_window_on_screen() {
 	auto monitor = 
 		glfwGetWindowMonitor(_win);
 
@@ -89,7 +92,7 @@ void API Window::center_window_on_screen() {
 	glfwSetWindowPos(_win, x_pos, y_pos);
 }
 
-void API Window::set_current_context() {
+void MAGNA_API Window::set_current_context() {
 	glfwMakeContextCurrent(_win);
 }
 

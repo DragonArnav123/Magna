@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../include/gllibs.hpp"
+#include "gllibs.hpp"
 
 namespace Engine {
 enum class Keys {

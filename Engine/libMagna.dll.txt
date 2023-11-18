@@ -1,0 +1,1824 @@
+
+.\bin\libMagna.dll:     file format pei-i386
+
+
+Disassembly of section .text:
+
+69c01000 <_pre_c_init>:
+69c01000:	83 ec 1c             	sub    $0x1c,%esp
+69c01003:	c7 04 24 00 60 c0 69 	movl   $0x69c06000,(%esp)
+69c0100a:	e8 21 12 00 00       	call   69c02230 <__initialize_onexit_table>
+69c0100f:	83 c4 1c             	add    $0x1c,%esp
+69c01012:	c3                   	ret    
+69c01013:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c01019:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+69c01020 <__CRT_INIT@12>:
+69c01020:	57                   	push   %edi
+69c01021:	56                   	push   %esi
+69c01022:	53                   	push   %ebx
+69c01023:	83 ec 10             	sub    $0x10,%esp
+69c01026:	8b 44 24 24          	mov    0x24(%esp),%eax
+69c0102a:	85 c0                	test   %eax,%eax
+69c0102c:	75 72                	jne    69c010a0 <__CRT_INIT@12+0x80>
+69c0102e:	8b 15 0c 60 c0 69    	mov    0x69c0600c,%edx
+69c01034:	85 d2                	test   %edx,%edx
+69c01036:	7e 57                	jle    69c0108f <__CRT_INIT@12+0x6f>
+69c01038:	83 ea 01             	sub    $0x1,%edx
+69c0103b:	31 ff                	xor    %edi,%edi
+69c0103d:	be 01 00 00 00       	mov    $0x1,%esi
+69c01042:	89 15 0c 60 c0 69    	mov    %edx,0x69c0600c
+69c01048:	eb 16                	jmp    69c01060 <__CRT_INIT@12+0x40>
+69c0104a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c01050:	c7 04 24 e8 03 00 00 	movl   $0x3e8,(%esp)
+69c01057:	ff 15 3c 81 c0 69    	call   *0x69c0813c
+69c0105d:	83 ec 04             	sub    $0x4,%esp
+69c01060:	89 f8                	mov    %edi,%eax
+69c01062:	f0 0f b1 35 c8 63 c0 	lock cmpxchg %esi,0x69c063c8
+69c01069:	69 
+69c0106a:	85 c0                	test   %eax,%eax
+69c0106c:	89 c3                	mov    %eax,%ebx
+69c0106e:	75 e0                	jne    69c01050 <__CRT_INIT@12+0x30>
+69c01070:	a1 cc 63 c0 69       	mov    0x69c063cc,%eax
+69c01075:	83 f8 02             	cmp    $0x2,%eax
+69c01078:	0f 84 e2 00 00 00    	je     69c01160 <__CRT_INIT@12+0x140>
+69c0107e:	c7 04 24 1f 00 00 00 	movl   $0x1f,(%esp)
+69c01085:	e8 96 11 00 00       	call   69c02220 <__amsg_exit>
+69c0108a:	b8 01 00 00 00       	mov    $0x1,%eax
+69c0108f:	83 c4 10             	add    $0x10,%esp
+69c01092:	5b                   	pop    %ebx
+69c01093:	5e                   	pop    %esi
+69c01094:	5f                   	pop    %edi
+69c01095:	c2 0c 00             	ret    $0xc
+69c01098:	90                   	nop
+69c01099:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+69c010a0:	83 f8 01             	cmp    $0x1,%eax
+69c010a3:	0f 85 a7 00 00 00    	jne    69c01150 <__CRT_INIT@12+0x130>
+69c010a9:	64 a1 18 00 00 00    	mov    %fs:0x18,%eax
+69c010af:	31 f6                	xor    %esi,%esi
+69c010b1:	8b 58 04             	mov    0x4(%eax),%ebx
+69c010b4:	8b 3d 3c 81 c0 69    	mov    0x69c0813c,%edi
+69c010ba:	eb 18                	jmp    69c010d4 <__CRT_INIT@12+0xb4>
+69c010bc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c010c0:	39 c3                	cmp    %eax,%ebx
+69c010c2:	0f 84 c8 00 00 00    	je     69c01190 <__CRT_INIT@12+0x170>
+69c010c8:	c7 04 24 e8 03 00 00 	movl   $0x3e8,(%esp)
+69c010cf:	ff d7                	call   *%edi
+69c010d1:	83 ec 04             	sub    $0x4,%esp
+69c010d4:	89 f0                	mov    %esi,%eax
+69c010d6:	f0 0f b1 1d c8 63 c0 	lock cmpxchg %ebx,0x69c063c8
+69c010dd:	69 
+69c010de:	85 c0                	test   %eax,%eax
+69c010e0:	75 de                	jne    69c010c0 <__CRT_INIT@12+0xa0>
+69c010e2:	31 db                	xor    %ebx,%ebx
+69c010e4:	a1 cc 63 c0 69       	mov    0x69c063cc,%eax
+69c010e9:	83 f8 01             	cmp    $0x1,%eax
+69c010ec:	0f 84 0e 01 00 00    	je     69c01200 <__CRT_INIT@12+0x1e0>
+69c010f2:	a1 cc 63 c0 69       	mov    0x69c063cc,%eax
+69c010f7:	85 c0                	test   %eax,%eax
+69c010f9:	0f 84 b1 00 00 00    	je     69c011b0 <__CRT_INIT@12+0x190>
+69c010ff:	a1 cc 63 c0 69       	mov    0x69c063cc,%eax
+69c01104:	83 f8 01             	cmp    $0x1,%eax
+69c01107:	0f 84 c6 00 00 00    	je     69c011d3 <__CRT_INIT@12+0x1b3>
+69c0110d:	85 db                	test   %ebx,%ebx
+69c0110f:	0f 84 8b 00 00 00    	je     69c011a0 <__CRT_INIT@12+0x180>
+69c01115:	a1 4c 40 c0 69       	mov    0x69c0404c,%eax
+69c0111a:	85 c0                	test   %eax,%eax
+69c0111c:	74 1c                	je     69c0113a <__CRT_INIT@12+0x11a>
+69c0111e:	8b 54 24 28          	mov    0x28(%esp),%edx
+69c01122:	c7 44 24 04 02 00 00 	movl   $0x2,0x4(%esp)
+69c01129:	00 
+69c0112a:	89 54 24 08          	mov    %edx,0x8(%esp)
+69c0112e:	8b 54 24 20          	mov    0x20(%esp),%edx
+69c01132:	89 14 24             	mov    %edx,(%esp)
+69c01135:	ff d0                	call   *%eax
+69c01137:	83 ec 0c             	sub    $0xc,%esp
+69c0113a:	83 05 0c 60 c0 69 01 	addl   $0x1,0x69c0600c
+69c01141:	83 c4 10             	add    $0x10,%esp
+69c01144:	b8 01 00 00 00       	mov    $0x1,%eax
+69c01149:	5b                   	pop    %ebx
+69c0114a:	5e                   	pop    %esi
+69c0114b:	5f                   	pop    %edi
+69c0114c:	c2 0c 00             	ret    $0xc
+69c0114f:	90                   	nop
+69c01150:	83 c4 10             	add    $0x10,%esp
+69c01153:	b8 01 00 00 00       	mov    $0x1,%eax
+69c01158:	5b                   	pop    %ebx
+69c01159:	5e                   	pop    %esi
+69c0115a:	5f                   	pop    %edi
+69c0115b:	c2 0c 00             	ret    $0xc
+69c0115e:	66 90                	xchg   %ax,%ax
+69c01160:	c7 04 24 00 60 c0 69 	movl   $0x69c06000,(%esp)
+69c01167:	e8 c4 11 00 00       	call   69c02330 <__execute_onexit_table>
+69c0116c:	c7 05 cc 63 c0 69 00 	movl   $0x0,0x69c063cc
+69c01173:	00 00 00 
+69c01176:	87 1d c8 63 c0 69    	xchg   %ebx,0x69c063c8
+69c0117c:	b8 01 00 00 00       	mov    $0x1,%eax
+69c01181:	83 c4 10             	add    $0x10,%esp
+69c01184:	5b                   	pop    %ebx
+69c01185:	5e                   	pop    %esi
+69c01186:	5f                   	pop    %edi
+69c01187:	c2 0c 00             	ret    $0xc
+69c0118a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c01190:	bb 01 00 00 00       	mov    $0x1,%ebx
+69c01195:	e9 4a ff ff ff       	jmp    69c010e4 <__CRT_INIT@12+0xc4>
+69c0119a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c011a0:	87 1d c8 63 c0 69    	xchg   %ebx,0x69c063c8
+69c011a6:	e9 6a ff ff ff       	jmp    69c01115 <__CRT_INIT@12+0xf5>
+69c011ab:	90                   	nop
+69c011ac:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c011b0:	c7 44 24 04 10 90 c0 	movl   $0x69c09010,0x4(%esp)
+69c011b7:	69 
+69c011b8:	c7 04 24 08 90 c0 69 	movl   $0x69c09008,(%esp)
+69c011bf:	c7 05 cc 63 c0 69 01 	movl   $0x1,0x69c063cc
+69c011c6:	00 00 00 
+69c011c9:	e8 4a 10 00 00       	call   69c02218 <__initterm>
+69c011ce:	e9 2c ff ff ff       	jmp    69c010ff <__CRT_INIT@12+0xdf>
+69c011d3:	c7 44 24 04 04 90 c0 	movl   $0x69c09004,0x4(%esp)
+69c011da:	69 
+69c011db:	c7 04 24 00 90 c0 69 	movl   $0x69c09000,(%esp)
+69c011e2:	e8 31 10 00 00       	call   69c02218 <__initterm>
+69c011e7:	c7 05 cc 63 c0 69 02 	movl   $0x2,0x69c063cc
+69c011ee:	00 00 00 
+69c011f1:	e9 17 ff ff ff       	jmp    69c0110d <__CRT_INIT@12+0xed>
+69c011f6:	8d 76 00             	lea    0x0(%esi),%esi
+69c011f9:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+69c01200:	c7 04 24 1f 00 00 00 	movl   $0x1f,(%esp)
+69c01207:	e8 14 10 00 00       	call   69c02220 <__amsg_exit>
+69c0120c:	e9 ee fe ff ff       	jmp    69c010ff <__CRT_INIT@12+0xdf>
+69c01211:	eb 0d                	jmp    69c01220 <___DllMainCRTStartup>
+69c01213:	90                   	nop
+69c01214:	90                   	nop
+69c01215:	90                   	nop
+69c01216:	90                   	nop
+69c01217:	90                   	nop
+69c01218:	90                   	nop
+69c01219:	90                   	nop
+69c0121a:	90                   	nop
+69c0121b:	90                   	nop
+69c0121c:	90                   	nop
+69c0121d:	90                   	nop
+69c0121e:	90                   	nop
+69c0121f:	90                   	nop
+
+69c01220 <___DllMainCRTStartup>:
+69c01220:	55                   	push   %ebp
+69c01221:	57                   	push   %edi
+69c01222:	89 cf                	mov    %ecx,%edi
+69c01224:	56                   	push   %esi
+69c01225:	53                   	push   %ebx
+69c01226:	89 c6                	mov    %eax,%esi
+69c01228:	89 d3                	mov    %edx,%ebx
+69c0122a:	83 ec 1c             	sub    $0x1c,%esp
+69c0122d:	85 d2                	test   %edx,%edx
+69c0122f:	89 15 0c 30 c0 69    	mov    %edx,0x69c0300c
+69c01235:	75 69                	jne    69c012a0 <___DllMainCRTStartup+0x80>
+69c01237:	a1 0c 60 c0 69       	mov    0x69c0600c,%eax
+69c0123c:	85 c0                	test   %eax,%eax
+69c0123e:	74 48                	je     69c01288 <___DllMainCRTStartup+0x68>
+69c01240:	e8 cb 06 00 00       	call   69c01910 <__pei386_runtime_relocator>
+69c01245:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c01249:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+69c01250:	00 
+69c01251:	89 34 24             	mov    %esi,(%esp)
+69c01254:	e8 77 0f 00 00       	call   69c021d0 <_DllMain@12>
+69c01259:	83 ec 0c             	sub    $0xc,%esp
+69c0125c:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c01260:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+69c01264:	89 34 24             	mov    %esi,(%esp)
+69c01267:	e8 54 0f 00 00       	call   69c021c0 <_DllEntryPoint@12>
+69c0126c:	83 ec 0c             	sub    $0xc,%esp
+69c0126f:	89 c5                	mov    %eax,%ebp
+69c01271:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c01275:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+69c01279:	89 34 24             	mov    %esi,(%esp)
+69c0127c:	e8 9f fd ff ff       	call   69c01020 <__CRT_INIT@12>
+69c01281:	83 ec 0c             	sub    $0xc,%esp
+69c01284:	85 c0                	test   %eax,%eax
+69c01286:	75 02                	jne    69c0128a <___DllMainCRTStartup+0x6a>
+69c01288:	31 ed                	xor    %ebp,%ebp
+69c0128a:	c7 05 0c 30 c0 69 ff 	movl   $0xffffffff,0x69c0300c
+69c01291:	ff ff ff 
+69c01294:	83 c4 1c             	add    $0x1c,%esp
+69c01297:	89 e8                	mov    %ebp,%eax
+69c01299:	5b                   	pop    %ebx
+69c0129a:	5e                   	pop    %esi
+69c0129b:	5f                   	pop    %edi
+69c0129c:	5d                   	pop    %ebp
+69c0129d:	c3                   	ret    
+69c0129e:	66 90                	xchg   %ax,%ax
+69c012a0:	e8 6b 06 00 00       	call   69c01910 <__pei386_runtime_relocator>
+69c012a5:	8d 43 ff             	lea    -0x1(%ebx),%eax
+69c012a8:	83 f8 01             	cmp    $0x1,%eax
+69c012ab:	76 23                	jbe    69c012d0 <___DllMainCRTStartup+0xb0>
+69c012ad:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c012b1:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+69c012b5:	89 34 24             	mov    %esi,(%esp)
+69c012b8:	e8 13 0f 00 00       	call   69c021d0 <_DllMain@12>
+69c012bd:	83 ec 0c             	sub    $0xc,%esp
+69c012c0:	83 fb 03             	cmp    $0x3,%ebx
+69c012c3:	89 c5                	mov    %eax,%ebp
+69c012c5:	75 c3                	jne    69c0128a <___DllMainCRTStartup+0x6a>
+69c012c7:	eb 93                	jmp    69c0125c <___DllMainCRTStartup+0x3c>
+69c012c9:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+69c012d0:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c012d4:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+69c012d8:	89 34 24             	mov    %esi,(%esp)
+69c012db:	e8 40 fd ff ff       	call   69c01020 <__CRT_INIT@12>
+69c012e0:	83 ec 0c             	sub    $0xc,%esp
+69c012e3:	85 c0                	test   %eax,%eax
+69c012e5:	74 a1                	je     69c01288 <___DllMainCRTStartup+0x68>
+69c012e7:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c012eb:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+69c012ef:	89 34 24             	mov    %esi,(%esp)
+69c012f2:	e8 c9 0e 00 00       	call   69c021c0 <_DllEntryPoint@12>
+69c012f7:	83 ec 0c             	sub    $0xc,%esp
+69c012fa:	85 c0                	test   %eax,%eax
+69c012fc:	89 c5                	mov    %eax,%ebp
+69c012fe:	74 75                	je     69c01375 <___DllMainCRTStartup+0x155>
+69c01300:	83 fb 01             	cmp    $0x1,%ebx
+69c01303:	75 a8                	jne    69c012ad <___DllMainCRTStartup+0x8d>
+69c01305:	e8 46 02 00 00       	call   69c01550 <___main>
+69c0130a:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c0130e:	c7 44 24 04 01 00 00 	movl   $0x1,0x4(%esp)
+69c01315:	00 
+69c01316:	89 34 24             	mov    %esi,(%esp)
+69c01319:	e8 b2 0e 00 00       	call   69c021d0 <_DllMain@12>
+69c0131e:	83 ec 0c             	sub    $0xc,%esp
+69c01321:	85 c0                	test   %eax,%eax
+69c01323:	89 c5                	mov    %eax,%ebp
+69c01325:	0f 85 5f ff ff ff    	jne    69c0128a <___DllMainCRTStartup+0x6a>
+69c0132b:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c0132f:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+69c01336:	00 
+69c01337:	89 34 24             	mov    %esi,(%esp)
+69c0133a:	e8 91 0e 00 00       	call   69c021d0 <_DllMain@12>
+69c0133f:	83 ec 0c             	sub    $0xc,%esp
+69c01342:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c01346:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+69c0134d:	00 
+69c0134e:	89 34 24             	mov    %esi,(%esp)
+69c01351:	e8 6a 0e 00 00       	call   69c021c0 <_DllEntryPoint@12>
+69c01356:	83 ec 0c             	sub    $0xc,%esp
+69c01359:	89 7c 24 08          	mov    %edi,0x8(%esp)
+69c0135d:	c7 44 24 04 00 00 00 	movl   $0x0,0x4(%esp)
+69c01364:	00 
+69c01365:	89 34 24             	mov    %esi,(%esp)
+69c01368:	e8 b3 fc ff ff       	call   69c01020 <__CRT_INIT@12>
+69c0136d:	83 ec 0c             	sub    $0xc,%esp
+69c01370:	e9 15 ff ff ff       	jmp    69c0128a <___DllMainCRTStartup+0x6a>
+69c01375:	83 fb 01             	cmp    $0x1,%ebx
+69c01378:	0f 85 0a ff ff ff    	jne    69c01288 <___DllMainCRTStartup+0x68>
+69c0137e:	eb d9                	jmp    69c01359 <___DllMainCRTStartup+0x139>
+
+69c01380 <_DllMainCRTStartup@12>:
+69c01380:	83 ec 1c             	sub    $0x1c,%esp
+69c01383:	c7 05 90 63 c0 69 00 	movl   $0x0,0x69c06390
+69c0138a:	00 00 00 
+69c0138d:	8b 54 24 24          	mov    0x24(%esp),%edx
+69c01391:	83 fa 01             	cmp    $0x1,%edx
+69c01394:	74 1a                	je     69c013b0 <_DllMainCRTStartup@12+0x30>
+69c01396:	8b 4c 24 28          	mov    0x28(%esp),%ecx
+69c0139a:	8b 44 24 20          	mov    0x20(%esp),%eax
+69c0139e:	e8 7d fe ff ff       	call   69c01220 <___DllMainCRTStartup>
+69c013a3:	83 c4 1c             	add    $0x1c,%esp
+69c013a6:	c2 0c 00             	ret    $0xc
+69c013a9:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+69c013b0:	89 54 24 0c          	mov    %edx,0xc(%esp)
+69c013b4:	e8 b7 01 00 00       	call   69c01570 <___security_init_cookie>
+69c013b9:	8b 54 24 0c          	mov    0xc(%esp),%edx
+69c013bd:	eb d7                	jmp    69c01396 <_DllMainCRTStartup@12+0x16>
+69c013bf:	90                   	nop
+
+69c013c0 <_atexit>:
+69c013c0:	83 ec 1c             	sub    $0x1c,%esp
+69c013c3:	8b 44 24 20          	mov    0x20(%esp),%eax
+69c013c7:	c7 04 24 00 60 c0 69 	movl   $0x69c06000,(%esp)
+69c013ce:	89 44 24 04          	mov    %eax,0x4(%esp)
+69c013d2:	e8 89 0e 00 00       	call   69c02260 <__register_onexit_function>
+69c013d7:	83 c4 1c             	add    $0x1c,%esp
+69c013da:	c3                   	ret    
+69c013db:	90                   	nop
+69c013dc:	90                   	nop
+69c013dd:	90                   	nop
+69c013de:	90                   	nop
+69c013df:	90                   	nop
+
+69c013e0 <___gcc_register_frame>:
+69c013e0:	55                   	push   %ebp
+69c013e1:	89 e5                	mov    %esp,%ebp
+69c013e3:	57                   	push   %edi
+69c013e4:	56                   	push   %esi
+69c013e5:	53                   	push   %ebx
+69c013e6:	83 ec 1c             	sub    $0x1c,%esp
+69c013e9:	c7 04 24 00 40 c0 69 	movl   $0x69c04000,(%esp)
+69c013f0:	ff 15 18 81 c0 69    	call   *0x69c08118
+69c013f6:	83 ec 04             	sub    $0x4,%esp
+69c013f9:	85 c0                	test   %eax,%eax
+69c013fb:	74 73                	je     69c01470 <___gcc_register_frame+0x90>
+69c013fd:	89 c3                	mov    %eax,%ebx
+69c013ff:	c7 04 24 00 40 c0 69 	movl   $0x69c04000,(%esp)
+69c01406:	ff 15 30 81 c0 69    	call   *0x69c08130
+69c0140c:	8b 3d 1c 81 c0 69    	mov    0x69c0811c,%edi
+69c01412:	83 ec 04             	sub    $0x4,%esp
+69c01415:	a3 c4 63 c0 69       	mov    %eax,0x69c063c4
+69c0141a:	c7 44 24 04 13 40 c0 	movl   $0x69c04013,0x4(%esp)
+69c01421:	69 
+69c01422:	89 1c 24             	mov    %ebx,(%esp)
+69c01425:	ff d7                	call   *%edi
+69c01427:	83 ec 08             	sub    $0x8,%esp
+69c0142a:	89 c6                	mov    %eax,%esi
+69c0142c:	c7 44 24 04 29 40 c0 	movl   $0x69c04029,0x4(%esp)
+69c01433:	69 
+69c01434:	89 1c 24             	mov    %ebx,(%esp)
+69c01437:	ff d7                	call   *%edi
+69c01439:	a3 00 30 c0 69       	mov    %eax,0x69c03000
+69c0143e:	83 ec 08             	sub    $0x8,%esp
+69c01441:	85 f6                	test   %esi,%esi
+69c01443:	74 11                	je     69c01456 <___gcc_register_frame+0x76>
+69c01445:	c7 44 24 04 10 60 c0 	movl   $0x69c06010,0x4(%esp)
+69c0144c:	69 
+69c0144d:	c7 04 24 60 51 c0 69 	movl   $0x69c05160,(%esp)
+69c01454:	ff d6                	call   *%esi
+69c01456:	c7 04 24 90 14 c0 69 	movl   $0x69c01490,(%esp)
+69c0145d:	e8 5e ff ff ff       	call   69c013c0 <_atexit>
+69c01462:	8d 65 f4             	lea    -0xc(%ebp),%esp
+69c01465:	5b                   	pop    %ebx
+69c01466:	5e                   	pop    %esi
+69c01467:	5f                   	pop    %edi
+69c01468:	5d                   	pop    %ebp
+69c01469:	c3                   	ret    
+69c0146a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c01470:	c7 05 00 30 c0 69 88 	movl   $0x69c02188,0x69c03000
+69c01477:	21 c0 69 
+69c0147a:	be 80 21 c0 69       	mov    $0x69c02180,%esi
+69c0147f:	eb c0                	jmp    69c01441 <___gcc_register_frame+0x61>
+69c01481:	eb 0d                	jmp    69c01490 <___gcc_deregister_frame>
+69c01483:	90                   	nop
+69c01484:	90                   	nop
+69c01485:	90                   	nop
+69c01486:	90                   	nop
+69c01487:	90                   	nop
+69c01488:	90                   	nop
+69c01489:	90                   	nop
+69c0148a:	90                   	nop
+69c0148b:	90                   	nop
+69c0148c:	90                   	nop
+69c0148d:	90                   	nop
+69c0148e:	90                   	nop
+69c0148f:	90                   	nop
+
+69c01490 <___gcc_deregister_frame>:
+69c01490:	55                   	push   %ebp
+69c01491:	89 e5                	mov    %esp,%ebp
+69c01493:	83 ec 18             	sub    $0x18,%esp
+69c01496:	a1 00 30 c0 69       	mov    0x69c03000,%eax
+69c0149b:	85 c0                	test   %eax,%eax
+69c0149d:	74 09                	je     69c014a8 <___gcc_deregister_frame+0x18>
+69c0149f:	c7 04 24 60 51 c0 69 	movl   $0x69c05160,(%esp)
+69c014a6:	ff d0                	call   *%eax
+69c014a8:	a1 c4 63 c0 69       	mov    0x69c063c4,%eax
+69c014ad:	85 c0                	test   %eax,%eax
+69c014af:	74 0c                	je     69c014bd <___gcc_deregister_frame+0x2d>
+69c014b1:	89 04 24             	mov    %eax,(%esp)
+69c014b4:	ff 15 04 81 c0 69    	call   *0x69c08104
+69c014ba:	83 ec 04             	sub    $0x4,%esp
+69c014bd:	c9                   	leave  
+69c014be:	c3                   	ret    
+69c014bf:	90                   	nop
+
+69c014c0 <___do_global_dtors>:
+69c014c0:	a1 04 30 c0 69       	mov    0x69c03004,%eax
+69c014c5:	8b 00                	mov    (%eax),%eax
+69c014c7:	85 c0                	test   %eax,%eax
+69c014c9:	74 25                	je     69c014f0 <___do_global_dtors+0x30>
+69c014cb:	83 ec 0c             	sub    $0xc,%esp
+69c014ce:	66 90                	xchg   %ax,%ax
+69c014d0:	ff d0                	call   *%eax
+69c014d2:	a1 04 30 c0 69       	mov    0x69c03004,%eax
+69c014d7:	8d 50 04             	lea    0x4(%eax),%edx
+69c014da:	8b 40 04             	mov    0x4(%eax),%eax
+69c014dd:	89 15 04 30 c0 69    	mov    %edx,0x69c03004
+69c014e3:	85 c0                	test   %eax,%eax
+69c014e5:	75 e9                	jne    69c014d0 <___do_global_dtors+0x10>
+69c014e7:	83 c4 0c             	add    $0xc,%esp
+69c014ea:	c3                   	ret    
+69c014eb:	90                   	nop
+69c014ec:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c014f0:	f3 c3                	repz ret 
+69c014f2:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+69c014f9:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+69c01500 <___do_global_ctors>:
+69c01500:	53                   	push   %ebx
+69c01501:	83 ec 18             	sub    $0x18,%esp
+69c01504:	8b 1d 40 24 c0 69    	mov    0x69c02440,%ebx
+69c0150a:	83 fb ff             	cmp    $0xffffffff,%ebx
+69c0150d:	74 21                	je     69c01530 <___do_global_ctors+0x30>
+69c0150f:	85 db                	test   %ebx,%ebx
+69c01511:	74 0c                	je     69c0151f <___do_global_ctors+0x1f>
+69c01513:	ff 14 9d 40 24 c0 69 	call   *0x69c02440(,%ebx,4)
+69c0151a:	83 eb 01             	sub    $0x1,%ebx
+69c0151d:	75 f4                	jne    69c01513 <___do_global_ctors+0x13>
+69c0151f:	c7 04 24 c0 14 c0 69 	movl   $0x69c014c0,(%esp)
+69c01526:	e8 95 fe ff ff       	call   69c013c0 <_atexit>
+69c0152b:	83 c4 18             	add    $0x18,%esp
+69c0152e:	5b                   	pop    %ebx
+69c0152f:	c3                   	ret    
+69c01530:	31 db                	xor    %ebx,%ebx
+69c01532:	eb 02                	jmp    69c01536 <___do_global_ctors+0x36>
+69c01534:	89 c3                	mov    %eax,%ebx
+69c01536:	8d 43 01             	lea    0x1(%ebx),%eax
+69c01539:	8b 14 85 40 24 c0 69 	mov    0x69c02440(,%eax,4),%edx
+69c01540:	85 d2                	test   %edx,%edx
+69c01542:	75 f0                	jne    69c01534 <___do_global_ctors+0x34>
+69c01544:	eb c9                	jmp    69c0150f <___do_global_ctors+0xf>
+69c01546:	8d 76 00             	lea    0x0(%esi),%esi
+69c01549:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+69c01550 <___main>:
+69c01550:	a1 28 60 c0 69       	mov    0x69c06028,%eax
+69c01555:	85 c0                	test   %eax,%eax
+69c01557:	74 07                	je     69c01560 <___main+0x10>
+69c01559:	f3 c3                	repz ret 
+69c0155b:	90                   	nop
+69c0155c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c01560:	c7 05 28 60 c0 69 01 	movl   $0x1,0x69c06028
+69c01567:	00 00 00 
+69c0156a:	eb 94                	jmp    69c01500 <___do_global_ctors>
+69c0156c:	90                   	nop
+69c0156d:	90                   	nop
+69c0156e:	90                   	nop
+69c0156f:	90                   	nop
+
+69c01570 <___security_init_cookie>:
+69c01570:	55                   	push   %ebp
+69c01571:	57                   	push   %edi
+69c01572:	56                   	push   %esi
+69c01573:	53                   	push   %ebx
+69c01574:	83 ec 2c             	sub    $0x2c,%esp
+69c01577:	a1 24 30 c0 69       	mov    0x69c03024,%eax
+69c0157c:	c7 44 24 10 00 00 00 	movl   $0x0,0x10(%esp)
+69c01583:	00 
+69c01584:	c7 44 24 14 00 00 00 	movl   $0x0,0x14(%esp)
+69c0158b:	00 
+69c0158c:	3d 4e e6 40 bb       	cmp    $0xbb40e64e,%eax
+69c01591:	74 0f                	je     69c015a2 <___security_init_cookie+0x32>
+69c01593:	f7 d0                	not    %eax
+69c01595:	a3 28 30 c0 69       	mov    %eax,0x69c03028
+69c0159a:	83 c4 2c             	add    $0x2c,%esp
+69c0159d:	5b                   	pop    %ebx
+69c0159e:	5e                   	pop    %esi
+69c0159f:	5f                   	pop    %edi
+69c015a0:	5d                   	pop    %ebp
+69c015a1:	c3                   	ret    
+69c015a2:	8d 44 24 10          	lea    0x10(%esp),%eax
+69c015a6:	89 04 24             	mov    %eax,(%esp)
+69c015a9:	ff 15 20 81 c0 69    	call   *0x69c08120
+69c015af:	83 ec 04             	sub    $0x4,%esp
+69c015b2:	8b 5c 24 10          	mov    0x10(%esp),%ebx
+69c015b6:	33 5c 24 14          	xor    0x14(%esp),%ebx
+69c015ba:	ff 15 0c 81 c0 69    	call   *0x69c0810c
+69c015c0:	89 c5                	mov    %eax,%ebp
+69c015c2:	ff 15 10 81 c0 69    	call   *0x69c08110
+69c015c8:	89 c7                	mov    %eax,%edi
+69c015ca:	ff 15 24 81 c0 69    	call   *0x69c08124
+69c015d0:	89 c6                	mov    %eax,%esi
+69c015d2:	8d 44 24 18          	lea    0x18(%esp),%eax
+69c015d6:	89 04 24             	mov    %eax,(%esp)
+69c015d9:	ff 15 34 81 c0 69    	call   *0x69c08134
+69c015df:	83 ec 04             	sub    $0x4,%esp
+69c015e2:	8b 44 24 18          	mov    0x18(%esp),%eax
+69c015e6:	31 d8                	xor    %ebx,%eax
+69c015e8:	33 44 24 1c          	xor    0x1c(%esp),%eax
+69c015ec:	31 e8                	xor    %ebp,%eax
+69c015ee:	31 f8                	xor    %edi,%eax
+69c015f0:	31 f0                	xor    %esi,%eax
+69c015f2:	3d 4e e6 40 bb       	cmp    $0xbb40e64e,%eax
+69c015f7:	74 17                	je     69c01610 <___security_init_cookie+0xa0>
+69c015f9:	89 c2                	mov    %eax,%edx
+69c015fb:	f7 d2                	not    %edx
+69c015fd:	a3 24 30 c0 69       	mov    %eax,0x69c03024
+69c01602:	89 15 28 30 c0 69    	mov    %edx,0x69c03028
+69c01608:	83 c4 2c             	add    $0x2c,%esp
+69c0160b:	5b                   	pop    %ebx
+69c0160c:	5e                   	pop    %esi
+69c0160d:	5f                   	pop    %edi
+69c0160e:	5d                   	pop    %ebp
+69c0160f:	c3                   	ret    
+69c01610:	ba b0 19 bf 44       	mov    $0x44bf19b0,%edx
+69c01615:	b8 4f e6 40 bb       	mov    $0xbb40e64f,%eax
+69c0161a:	eb e1                	jmp    69c015fd <___security_init_cookie+0x8d>
+69c0161c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+
+69c01620 <___report_gsfailure>:
+69c01620:	55                   	push   %ebp
+69c01621:	89 e5                	mov    %esp,%ebp
+69c01623:	83 ec 28             	sub    $0x28,%esp
+69c01626:	c7 05 20 63 c0 69 09 	movl   $0xc0000409,0x69c06320
+69c0162d:	04 00 c0 
+69c01630:	8b 45 04             	mov    0x4(%ebp),%eax
+69c01633:	8d 55 04             	lea    0x4(%ebp),%edx
+69c01636:	c7 05 24 63 c0 69 01 	movl   $0x1,0x69c06324
+69c0163d:	00 00 00 
+69c01640:	c7 04 24 00 00 00 00 	movl   $0x0,(%esp)
+69c01647:	89 15 04 61 c0 69    	mov    %edx,0x69c06104
+69c0164d:	a3 f8 60 c0 69       	mov    %eax,0x69c060f8
+69c01652:	a3 2c 63 c0 69       	mov    %eax,0x69c0632c
+69c01657:	8b 45 08             	mov    0x8(%ebp),%eax
+69c0165a:	a3 ec 60 c0 69       	mov    %eax,0x69c060ec
+69c0165f:	a1 24 30 c0 69       	mov    0x69c03024,%eax
+69c01664:	89 45 f0             	mov    %eax,-0x10(%ebp)
+69c01667:	a1 28 30 c0 69       	mov    0x69c03028,%eax
+69c0166c:	89 45 f4             	mov    %eax,-0xc(%ebp)
+69c0166f:	ff 15 38 81 c0 69    	call   *0x69c08138
+69c01675:	83 ec 04             	sub    $0x4,%esp
+69c01678:	c7 04 24 44 40 c0 69 	movl   $0x69c04044,(%esp)
+69c0167f:	ff 15 48 81 c0 69    	call   *0x69c08148
+69c01685:	83 ec 04             	sub    $0x4,%esp
+69c01688:	ff 15 08 81 c0 69    	call   *0x69c08108
+69c0168e:	c7 44 24 04 09 04 00 	movl   $0xc0000409,0x4(%esp)
+69c01695:	c0 
+69c01696:	89 04 24             	mov    %eax,(%esp)
+69c01699:	ff 15 40 81 c0 69    	call   *0x69c08140
+69c0169f:	83 ec 08             	sub    $0x8,%esp
+69c016a2:	e8 69 0b 00 00       	call   69c02210 <_abort>
+69c016a7:	90                   	nop
+69c016a8:	90                   	nop
+69c016a9:	90                   	nop
+69c016aa:	90                   	nop
+69c016ab:	90                   	nop
+69c016ac:	90                   	nop
+69c016ad:	90                   	nop
+69c016ae:	90                   	nop
+69c016af:	90                   	nop
+
+69c016b0 <___dyn_tls_dtor@12>:
+69c016b0:	83 ec 1c             	sub    $0x1c,%esp
+69c016b3:	8b 44 24 24          	mov    0x24(%esp),%eax
+69c016b7:	83 f8 03             	cmp    $0x3,%eax
+69c016ba:	74 14                	je     69c016d0 <___dyn_tls_dtor@12+0x20>
+69c016bc:	85 c0                	test   %eax,%eax
+69c016be:	74 10                	je     69c016d0 <___dyn_tls_dtor@12+0x20>
+69c016c0:	b8 01 00 00 00       	mov    $0x1,%eax
+69c016c5:	83 c4 1c             	add    $0x1c,%esp
+69c016c8:	c2 0c 00             	ret    $0xc
+69c016cb:	90                   	nop
+69c016cc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c016d0:	8b 54 24 28          	mov    0x28(%esp),%edx
+69c016d4:	89 44 24 04          	mov    %eax,0x4(%esp)
+69c016d8:	8b 44 24 20          	mov    0x20(%esp),%eax
+69c016dc:	89 54 24 08          	mov    %edx,0x8(%esp)
+69c016e0:	89 04 24             	mov    %eax,(%esp)
+69c016e3:	e8 38 06 00 00       	call   69c01d20 <___mingw_TLScallback>
+69c016e8:	b8 01 00 00 00       	mov    $0x1,%eax
+69c016ed:	83 c4 1c             	add    $0x1c,%esp
+69c016f0:	c2 0c 00             	ret    $0xc
+69c016f3:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c016f9:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+69c01700 <___dyn_tls_init@12>:
+69c01700:	56                   	push   %esi
+69c01701:	53                   	push   %ebx
+69c01702:	83 ec 14             	sub    $0x14,%esp
+69c01705:	83 3d 10 30 c0 69 02 	cmpl   $0x2,0x69c03010
+69c0170c:	8b 44 24 24          	mov    0x24(%esp),%eax
+69c01710:	74 0a                	je     69c0171c <___dyn_tls_init@12+0x1c>
+69c01712:	c7 05 10 30 c0 69 02 	movl   $0x2,0x69c03010
+69c01719:	00 00 00 
+69c0171c:	83 f8 02             	cmp    $0x2,%eax
+69c0171f:	74 12                	je     69c01733 <___dyn_tls_init@12+0x33>
+69c01721:	83 f8 01             	cmp    $0x1,%eax
+69c01724:	74 3a                	je     69c01760 <___dyn_tls_init@12+0x60>
+69c01726:	83 c4 14             	add    $0x14,%esp
+69c01729:	b8 01 00 00 00       	mov    $0x1,%eax
+69c0172e:	5b                   	pop    %ebx
+69c0172f:	5e                   	pop    %esi
+69c01730:	c2 0c 00             	ret    $0xc
+69c01733:	bb 28 90 c0 69       	mov    $0x69c09028,%ebx
+69c01738:	be 28 90 c0 69       	mov    $0x69c09028,%esi
+69c0173d:	39 de                	cmp    %ebx,%esi
+69c0173f:	74 e5                	je     69c01726 <___dyn_tls_init@12+0x26>
+69c01741:	8b 03                	mov    (%ebx),%eax
+69c01743:	85 c0                	test   %eax,%eax
+69c01745:	74 02                	je     69c01749 <___dyn_tls_init@12+0x49>
+69c01747:	ff d0                	call   *%eax
+69c01749:	83 c3 04             	add    $0x4,%ebx
+69c0174c:	39 de                	cmp    %ebx,%esi
+69c0174e:	75 f1                	jne    69c01741 <___dyn_tls_init@12+0x41>
+69c01750:	83 c4 14             	add    $0x14,%esp
+69c01753:	b8 01 00 00 00       	mov    $0x1,%eax
+69c01758:	5b                   	pop    %ebx
+69c01759:	5e                   	pop    %esi
+69c0175a:	c2 0c 00             	ret    $0xc
+69c0175d:	8d 76 00             	lea    0x0(%esi),%esi
+69c01760:	8b 44 24 28          	mov    0x28(%esp),%eax
+69c01764:	c7 44 24 04 01 00 00 	movl   $0x1,0x4(%esp)
+69c0176b:	00 
+69c0176c:	89 44 24 08          	mov    %eax,0x8(%esp)
+69c01770:	8b 44 24 20          	mov    0x20(%esp),%eax
+69c01774:	89 04 24             	mov    %eax,(%esp)
+69c01777:	e8 a4 05 00 00       	call   69c01d20 <___mingw_TLScallback>
+69c0177c:	83 c4 14             	add    $0x14,%esp
+69c0177f:	b8 01 00 00 00       	mov    $0x1,%eax
+69c01784:	5b                   	pop    %ebx
+69c01785:	5e                   	pop    %esi
+69c01786:	c2 0c 00             	ret    $0xc
+69c01789:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+
+69c01790 <___tlregdtor>:
+69c01790:	31 c0                	xor    %eax,%eax
+69c01792:	c3                   	ret    
+69c01793:	90                   	nop
+69c01794:	90                   	nop
+69c01795:	90                   	nop
+69c01796:	90                   	nop
+69c01797:	90                   	nop
+69c01798:	90                   	nop
+69c01799:	90                   	nop
+69c0179a:	90                   	nop
+69c0179b:	90                   	nop
+69c0179c:	90                   	nop
+69c0179d:	90                   	nop
+69c0179e:	90                   	nop
+69c0179f:	90                   	nop
+
+69c017a0 <__decode_pointer>:
+69c017a0:	8b 44 24 04          	mov    0x4(%esp),%eax
+69c017a4:	c3                   	ret    
+69c017a5:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c017a9:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+69c017b0 <__encode_pointer>:
+69c017b0:	8b 44 24 04          	mov    0x4(%esp),%eax
+69c017b4:	c3                   	ret    
+69c017b5:	90                   	nop
+69c017b6:	90                   	nop
+69c017b7:	90                   	nop
+69c017b8:	90                   	nop
+69c017b9:	90                   	nop
+69c017ba:	90                   	nop
+69c017bb:	90                   	nop
+69c017bc:	90                   	nop
+69c017bd:	90                   	nop
+69c017be:	90                   	nop
+69c017bf:	90                   	nop
+
+69c017c0 <_mark_section_writable>:
+69c017c0:	57                   	push   %edi
+69c017c1:	56                   	push   %esi
+69c017c2:	53                   	push   %ebx
+69c017c3:	83 ec 30             	sub    $0x30,%esp
+69c017c6:	8b 35 98 63 c0 69    	mov    0x69c06398,%esi
+69c017cc:	85 f6                	test   %esi,%esi
+69c017ce:	0f 8e fc 00 00 00    	jle    69c018d0 <_mark_section_writable+0x110>
+69c017d4:	8b 3d 9c 63 c0 69    	mov    0x69c0639c,%edi
+69c017da:	31 db                	xor    %ebx,%ebx
+69c017dc:	8d 57 0c             	lea    0xc(%edi),%edx
+69c017df:	90                   	nop
+69c017e0:	8b 0a                	mov    (%edx),%ecx
+69c017e2:	39 c1                	cmp    %eax,%ecx
+69c017e4:	77 0e                	ja     69c017f4 <_mark_section_writable+0x34>
+69c017e6:	8b 7a 04             	mov    0x4(%edx),%edi
+69c017e9:	03 4f 08             	add    0x8(%edi),%ecx
+69c017ec:	39 c8                	cmp    %ecx,%eax
+69c017ee:	0f 82 81 00 00 00    	jb     69c01875 <_mark_section_writable+0xb5>
+69c017f4:	83 c3 01             	add    $0x1,%ebx
+69c017f7:	83 c2 14             	add    $0x14,%edx
+69c017fa:	39 f3                	cmp    %esi,%ebx
+69c017fc:	75 e2                	jne    69c017e0 <_mark_section_writable+0x20>
+69c017fe:	89 04 24             	mov    %eax,(%esp)
+69c01801:	89 c3                	mov    %eax,%ebx
+69c01803:	e8 08 07 00 00       	call   69c01f10 <___mingw_GetSectionForAddress>
+69c01808:	85 c0                	test   %eax,%eax
+69c0180a:	89 c7                	mov    %eax,%edi
+69c0180c:	0f 84 e5 00 00 00    	je     69c018f7 <_mark_section_writable+0x137>
+69c01812:	a1 9c 63 c0 69       	mov    0x69c0639c,%eax
+69c01817:	8d 1c b6             	lea    (%esi,%esi,4),%ebx
+69c0181a:	c1 e3 02             	shl    $0x2,%ebx
+69c0181d:	01 d8                	add    %ebx,%eax
+69c0181f:	89 78 10             	mov    %edi,0x10(%eax)
+69c01822:	c7 00 00 00 00 00    	movl   $0x0,(%eax)
+69c01828:	e8 e3 07 00 00       	call   69c02010 <__GetPEImageBase>
+69c0182d:	03 47 0c             	add    0xc(%edi),%eax
+69c01830:	8b 15 9c 63 c0 69    	mov    0x69c0639c,%edx
+69c01836:	89 44 1a 0c          	mov    %eax,0xc(%edx,%ebx,1)
+69c0183a:	8d 54 24 14          	lea    0x14(%esp),%edx
+69c0183e:	c7 44 24 08 1c 00 00 	movl   $0x1c,0x8(%esp)
+69c01845:	00 
+69c01846:	89 04 24             	mov    %eax,(%esp)
+69c01849:	89 54 24 04          	mov    %edx,0x4(%esp)
+69c0184d:	ff 15 50 81 c0 69    	call   *0x69c08150
+69c01853:	83 ec 0c             	sub    $0xc,%esp
+69c01856:	85 c0                	test   %eax,%eax
+69c01858:	74 7d                	je     69c018d7 <_mark_section_writable+0x117>
+69c0185a:	8b 44 24 28          	mov    0x28(%esp),%eax
+69c0185e:	8d 50 c0             	lea    -0x40(%eax),%edx
+69c01861:	83 e2 bf             	and    $0xffffffbf,%edx
+69c01864:	74 08                	je     69c0186e <_mark_section_writable+0xae>
+69c01866:	83 e8 04             	sub    $0x4,%eax
+69c01869:	83 e0 fb             	and    $0xfffffffb,%eax
+69c0186c:	75 12                	jne    69c01880 <_mark_section_writable+0xc0>
+69c0186e:	83 05 98 63 c0 69 01 	addl   $0x1,0x69c06398
+69c01875:	83 c4 30             	add    $0x30,%esp
+69c01878:	5b                   	pop    %ebx
+69c01879:	5e                   	pop    %esi
+69c0187a:	5f                   	pop    %edi
+69c0187b:	c3                   	ret    
+69c0187c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c01880:	03 1d 9c 63 c0 69    	add    0x69c0639c,%ebx
+69c01886:	8b 44 24 14          	mov    0x14(%esp),%eax
+69c0188a:	8b 54 24 20          	mov    0x20(%esp),%edx
+69c0188e:	89 43 04             	mov    %eax,0x4(%ebx)
+69c01891:	89 53 08             	mov    %edx,0x8(%ebx)
+69c01894:	89 5c 24 0c          	mov    %ebx,0xc(%esp)
+69c01898:	c7 44 24 08 40 00 00 	movl   $0x40,0x8(%esp)
+69c0189f:	00 
+69c018a0:	89 54 24 04          	mov    %edx,0x4(%esp)
+69c018a4:	89 04 24             	mov    %eax,(%esp)
+69c018a7:	ff 15 4c 81 c0 69    	call   *0x69c0814c
+69c018ad:	83 ec 10             	sub    $0x10,%esp
+69c018b0:	85 c0                	test   %eax,%eax
+69c018b2:	75 ba                	jne    69c0186e <_mark_section_writable+0xae>
+69c018b4:	ff 15 14 81 c0 69    	call   *0x69c08114
+69c018ba:	c7 04 24 d8 40 c0 69 	movl   $0x69c040d8,(%esp)
+69c018c1:	89 44 24 04          	mov    %eax,0x4(%esp)
+69c018c5:	e8 fe 0a 00 00       	call   69c023c8 <___report_error>
+69c018ca:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c018d0:	31 f6                	xor    %esi,%esi
+69c018d2:	e9 27 ff ff ff       	jmp    69c017fe <_mark_section_writable+0x3e>
+69c018d7:	a1 9c 63 c0 69       	mov    0x69c0639c,%eax
+69c018dc:	8b 44 18 0c          	mov    0xc(%eax,%ebx,1),%eax
+69c018e0:	89 44 24 08          	mov    %eax,0x8(%esp)
+69c018e4:	8b 47 08             	mov    0x8(%edi),%eax
+69c018e7:	c7 04 24 a4 40 c0 69 	movl   $0x69c040a4,(%esp)
+69c018ee:	89 44 24 04          	mov    %eax,0x4(%esp)
+69c018f2:	e8 d1 0a 00 00       	call   69c023c8 <___report_error>
+69c018f7:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+69c018fb:	c7 04 24 84 40 c0 69 	movl   $0x69c04084,(%esp)
+69c01902:	e8 c1 0a 00 00       	call   69c023c8 <___report_error>
+69c01907:	89 f6                	mov    %esi,%esi
+69c01909:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+69c01910 <__pei386_runtime_relocator>:
+69c01910:	55                   	push   %ebp
+69c01911:	89 e5                	mov    %esp,%ebp
+69c01913:	57                   	push   %edi
+69c01914:	56                   	push   %esi
+69c01915:	53                   	push   %ebx
+69c01916:	83 ec 3c             	sub    $0x3c,%esp
+69c01919:	8b 1d 94 63 c0 69    	mov    0x69c06394,%ebx
+69c0191f:	85 db                	test   %ebx,%ebx
+69c01921:	74 0d                	je     69c01930 <__pei386_runtime_relocator+0x20>
+69c01923:	8d 65 f4             	lea    -0xc(%ebp),%esp
+69c01926:	5b                   	pop    %ebx
+69c01927:	5e                   	pop    %esi
+69c01928:	5f                   	pop    %edi
+69c01929:	5d                   	pop    %ebp
+69c0192a:	c3                   	ret    
+69c0192b:	90                   	nop
+69c0192c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c01930:	c7 05 94 63 c0 69 01 	movl   $0x1,0x69c06394
+69c01937:	00 00 00 
+69c0193a:	e8 41 06 00 00       	call   69c01f80 <___mingw_GetSectionCount>
+69c0193f:	8d 04 80             	lea    (%eax,%eax,4),%eax
+69c01942:	8d 04 85 1e 00 00 00 	lea    0x1e(,%eax,4),%eax
+69c01949:	83 e0 f0             	and    $0xfffffff0,%eax
+69c0194c:	e8 3f 08 00 00       	call   69c02190 <___chkstk_ms>
+69c01951:	c7 05 98 63 c0 69 00 	movl   $0x0,0x69c06398
+69c01958:	00 00 00 
+69c0195b:	29 c4                	sub    %eax,%esp
+69c0195d:	8d 44 24 1f          	lea    0x1f(%esp),%eax
+69c01961:	83 e0 f0             	and    $0xfffffff0,%eax
+69c01964:	a3 9c 63 c0 69       	mov    %eax,0x69c0639c
+69c01969:	b8 60 41 c0 69       	mov    $0x69c04160,%eax
+69c0196e:	2d 60 41 c0 69       	sub    $0x69c04160,%eax
+69c01973:	83 f8 07             	cmp    $0x7,%eax
+69c01976:	7e ab                	jle    69c01923 <__pei386_runtime_relocator+0x13>
+69c01978:	83 f8 0b             	cmp    $0xb,%eax
+69c0197b:	8b 15 60 41 c0 69    	mov    0x69c04160,%edx
+69c01981:	0f 8e ba 00 00 00    	jle    69c01a41 <__pei386_runtime_relocator+0x131>
+69c01987:	85 d2                	test   %edx,%edx
+69c01989:	0f 84 36 01 00 00    	je     69c01ac5 <__pei386_runtime_relocator+0x1b5>
+69c0198f:	b9 60 41 c0 69       	mov    $0x69c04160,%ecx
+69c01994:	81 f9 60 41 c0 69    	cmp    $0x69c04160,%ecx
+69c0199a:	73 87                	jae    69c01923 <__pei386_runtime_relocator+0x13>
+69c0199c:	8d 71 08             	lea    0x8(%ecx),%esi
+69c0199f:	b8 67 41 c0 69       	mov    $0x69c04167,%eax
+69c019a4:	89 5d d0             	mov    %ebx,-0x30(%ebp)
+69c019a7:	89 ca                	mov    %ecx,%edx
+69c019a9:	29 f0                	sub    %esi,%eax
+69c019ab:	89 f3                	mov    %esi,%ebx
+69c019ad:	c1 e8 03             	shr    $0x3,%eax
+69c019b0:	8d 44 c1 08          	lea    0x8(%ecx,%eax,8),%eax
+69c019b4:	89 45 d4             	mov    %eax,-0x2c(%ebp)
+69c019b7:	eb 0a                	jmp    69c019c3 <__pei386_runtime_relocator+0xb3>
+69c019b9:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+69c019c0:	83 c3 08             	add    $0x8,%ebx
+69c019c3:	8b 7a 04             	mov    0x4(%edx),%edi
+69c019c6:	8b 12                	mov    (%edx),%edx
+69c019c8:	8b b7 00 00 c0 69    	mov    0x69c00000(%edi),%esi
+69c019ce:	8d 87 00 00 c0 69    	lea    0x69c00000(%edi),%eax
+69c019d4:	01 d6                	add    %edx,%esi
+69c019d6:	e8 e5 fd ff ff       	call   69c017c0 <_mark_section_writable>
+69c019db:	3b 5d d4             	cmp    -0x2c(%ebp),%ebx
+69c019de:	89 b7 00 00 c0 69    	mov    %esi,0x69c00000(%edi)
+69c019e4:	89 da                	mov    %ebx,%edx
+69c019e6:	75 d8                	jne    69c019c0 <__pei386_runtime_relocator+0xb0>
+69c019e8:	8b 5d d0             	mov    -0x30(%ebp),%ebx
+69c019eb:	8b 35 98 63 c0 69    	mov    0x69c06398,%esi
+69c019f1:	85 f6                	test   %esi,%esi
+69c019f3:	0f 8e 2a ff ff ff    	jle    69c01923 <__pei386_runtime_relocator+0x13>
+69c019f9:	8b 35 4c 81 c0 69    	mov    0x69c0814c,%esi
+69c019ff:	8d 7d e4             	lea    -0x1c(%ebp),%edi
+69c01a02:	8b 15 9c 63 c0 69    	mov    0x69c0639c,%edx
+69c01a08:	8d 04 9b             	lea    (%ebx,%ebx,4),%eax
+69c01a0b:	8d 04 82             	lea    (%edx,%eax,4),%eax
+69c01a0e:	8b 10                	mov    (%eax),%edx
+69c01a10:	85 d2                	test   %edx,%edx
+69c01a12:	74 1a                	je     69c01a2e <__pei386_runtime_relocator+0x11e>
+69c01a14:	89 7c 24 0c          	mov    %edi,0xc(%esp)
+69c01a18:	89 54 24 08          	mov    %edx,0x8(%esp)
+69c01a1c:	8b 50 08             	mov    0x8(%eax),%edx
+69c01a1f:	89 54 24 04          	mov    %edx,0x4(%esp)
+69c01a23:	8b 40 04             	mov    0x4(%eax),%eax
+69c01a26:	89 04 24             	mov    %eax,(%esp)
+69c01a29:	ff d6                	call   *%esi
+69c01a2b:	83 ec 10             	sub    $0x10,%esp
+69c01a2e:	83 c3 01             	add    $0x1,%ebx
+69c01a31:	3b 1d 98 63 c0 69    	cmp    0x69c06398,%ebx
+69c01a37:	7c c9                	jl     69c01a02 <__pei386_runtime_relocator+0xf2>
+69c01a39:	8d 65 f4             	lea    -0xc(%ebp),%esp
+69c01a3c:	5b                   	pop    %ebx
+69c01a3d:	5e                   	pop    %esi
+69c01a3e:	5f                   	pop    %edi
+69c01a3f:	5d                   	pop    %ebp
+69c01a40:	c3                   	ret    
+69c01a41:	b9 60 41 c0 69       	mov    $0x69c04160,%ecx
+69c01a46:	85 d2                	test   %edx,%edx
+69c01a48:	0f 85 46 ff ff ff    	jne    69c01994 <__pei386_runtime_relocator+0x84>
+69c01a4e:	8b 41 04             	mov    0x4(%ecx),%eax
+69c01a51:	85 c0                	test   %eax,%eax
+69c01a53:	0f 85 3b ff ff ff    	jne    69c01994 <__pei386_runtime_relocator+0x84>
+69c01a59:	8b 41 08             	mov    0x8(%ecx),%eax
+69c01a5c:	83 f8 01             	cmp    $0x1,%eax
+69c01a5f:	0f 85 1b 01 00 00    	jne    69c01b80 <__pei386_runtime_relocator+0x270>
+69c01a65:	8d 71 0c             	lea    0xc(%ecx),%esi
+69c01a68:	81 fe 60 41 c0 69    	cmp    $0x69c04160,%esi
+69c01a6e:	0f 83 af fe ff ff    	jae    69c01923 <__pei386_runtime_relocator+0x13>
+69c01a74:	89 5d cc             	mov    %ebx,-0x34(%ebp)
+69c01a77:	89 f6                	mov    %esi,%esi
+69c01a79:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+69c01a80:	8b 06                	mov    (%esi),%eax
+69c01a82:	0f b6 5e 08          	movzbl 0x8(%esi),%ebx
+69c01a86:	8b 4e 04             	mov    0x4(%esi),%ecx
+69c01a89:	8d 90 00 00 c0 69    	lea    0x69c00000(%eax),%edx
+69c01a8f:	8b 80 00 00 c0 69    	mov    0x69c00000(%eax),%eax
+69c01a95:	83 fb 10             	cmp    $0x10,%ebx
+69c01a98:	8d b9 00 00 c0 69    	lea    0x69c00000(%ecx),%edi
+69c01a9e:	89 45 d4             	mov    %eax,-0x2c(%ebp)
+69c01aa1:	74 4e                	je     69c01af1 <__pei386_runtime_relocator+0x1e1>
+69c01aa3:	83 fb 20             	cmp    $0x20,%ebx
+69c01aa6:	0f 84 b6 00 00 00    	je     69c01b62 <__pei386_runtime_relocator+0x252>
+69c01aac:	83 fb 08             	cmp    $0x8,%ebx
+69c01aaf:	0f 84 8b 00 00 00    	je     69c01b40 <__pei386_runtime_relocator+0x230>
+69c01ab5:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+69c01ab9:	c7 04 24 34 41 c0 69 	movl   $0x69c04134,(%esp)
+69c01ac0:	e8 03 09 00 00       	call   69c023c8 <___report_error>
+69c01ac5:	8b 0d 64 41 c0 69    	mov    0x69c04164,%ecx
+69c01acb:	85 c9                	test   %ecx,%ecx
+69c01acd:	0f 85 bc fe ff ff    	jne    69c0198f <__pei386_runtime_relocator+0x7f>
+69c01ad3:	8b 15 68 41 c0 69    	mov    0x69c04168,%edx
+69c01ad9:	85 d2                	test   %edx,%edx
+69c01adb:	0f 85 95 00 00 00    	jne    69c01b76 <__pei386_runtime_relocator+0x266>
+69c01ae1:	8b 15 6c 41 c0 69    	mov    0x69c0416c,%edx
+69c01ae7:	b9 6c 41 c0 69       	mov    $0x69c0416c,%ecx
+69c01aec:	e9 55 ff ff ff       	jmp    69c01a46 <__pei386_runtime_relocator+0x136>
+69c01af1:	0f b7 99 00 00 c0 69 	movzwl 0x69c00000(%ecx),%ebx
+69c01af8:	89 4d d0             	mov    %ecx,-0x30(%ebp)
+69c01afb:	89 d8                	mov    %ebx,%eax
+69c01afd:	0d 00 00 ff ff       	or     $0xffff0000,%eax
+69c01b02:	66 83 b9 00 00 c0 69 	cmpw   $0x0,0x69c00000(%ecx)
+69c01b09:	00 
+69c01b0a:	0f 48 d8             	cmovs  %eax,%ebx
+69c01b0d:	89 f8                	mov    %edi,%eax
+69c01b0f:	29 d3                	sub    %edx,%ebx
+69c01b11:	03 5d d4             	add    -0x2c(%ebp),%ebx
+69c01b14:	e8 a7 fc ff ff       	call   69c017c0 <_mark_section_writable>
+69c01b19:	8b 4d d0             	mov    -0x30(%ebp),%ecx
+69c01b1c:	66 89 99 00 00 c0 69 	mov    %bx,0x69c00000(%ecx)
+69c01b23:	83 c6 0c             	add    $0xc,%esi
+69c01b26:	81 fe 60 41 c0 69    	cmp    $0x69c04160,%esi
+69c01b2c:	0f 82 4e ff ff ff    	jb     69c01a80 <__pei386_runtime_relocator+0x170>
+69c01b32:	8b 5d cc             	mov    -0x34(%ebp),%ebx
+69c01b35:	e9 b1 fe ff ff       	jmp    69c019eb <__pei386_runtime_relocator+0xdb>
+69c01b3a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c01b40:	0f b6 0f             	movzbl (%edi),%ecx
+69c01b43:	89 cb                	mov    %ecx,%ebx
+69c01b45:	81 cb 00 ff ff ff    	or     $0xffffff00,%ebx
+69c01b4b:	80 3f 00             	cmpb   $0x0,(%edi)
+69c01b4e:	0f 48 cb             	cmovs  %ebx,%ecx
+69c01b51:	29 d1                	sub    %edx,%ecx
+69c01b53:	01 c8                	add    %ecx,%eax
+69c01b55:	89 c3                	mov    %eax,%ebx
+69c01b57:	89 f8                	mov    %edi,%eax
+69c01b59:	e8 62 fc ff ff       	call   69c017c0 <_mark_section_writable>
+69c01b5e:	88 1f                	mov    %bl,(%edi)
+69c01b60:	eb c1                	jmp    69c01b23 <__pei386_runtime_relocator+0x213>
+69c01b62:	8b 45 d4             	mov    -0x2c(%ebp),%eax
+69c01b65:	29 d0                	sub    %edx,%eax
+69c01b67:	03 07                	add    (%edi),%eax
+69c01b69:	89 c3                	mov    %eax,%ebx
+69c01b6b:	89 f8                	mov    %edi,%eax
+69c01b6d:	e8 4e fc ff ff       	call   69c017c0 <_mark_section_writable>
+69c01b72:	89 1f                	mov    %ebx,(%edi)
+69c01b74:	eb ad                	jmp    69c01b23 <__pei386_runtime_relocator+0x213>
+69c01b76:	b9 60 41 c0 69       	mov    $0x69c04160,%ecx
+69c01b7b:	e9 d9 fe ff ff       	jmp    69c01a59 <__pei386_runtime_relocator+0x149>
+69c01b80:	89 44 24 04          	mov    %eax,0x4(%esp)
+69c01b84:	c7 04 24 00 41 c0 69 	movl   $0x69c04100,(%esp)
+69c01b8b:	e8 38 08 00 00       	call   69c023c8 <___report_error>
+
+69c01b90 <___mingwthr_run_key_dtors.part.0>:
+69c01b90:	55                   	push   %ebp
+69c01b91:	57                   	push   %edi
+69c01b92:	56                   	push   %esi
+69c01b93:	53                   	push   %ebx
+69c01b94:	83 ec 1c             	sub    $0x1c,%esp
+69c01b97:	c7 04 24 a8 63 c0 69 	movl   $0x69c063a8,(%esp)
+69c01b9e:	ff 15 00 81 c0 69    	call   *0x69c08100
+69c01ba4:	8b 1d a0 63 c0 69    	mov    0x69c063a0,%ebx
+69c01baa:	83 ec 04             	sub    $0x4,%esp
+69c01bad:	85 db                	test   %ebx,%ebx
+69c01baf:	74 34                	je     69c01be5 <___mingwthr_run_key_dtors.part.0+0x55>
+69c01bb1:	8b 2d 44 81 c0 69    	mov    0x69c08144,%ebp
+69c01bb7:	8b 3d 14 81 c0 69    	mov    0x69c08114,%edi
+69c01bbd:	8d 76 00             	lea    0x0(%esi),%esi
+69c01bc0:	8b 03                	mov    (%ebx),%eax
+69c01bc2:	89 04 24             	mov    %eax,(%esp)
+69c01bc5:	ff d5                	call   *%ebp
+69c01bc7:	83 ec 04             	sub    $0x4,%esp
+69c01bca:	89 c6                	mov    %eax,%esi
+69c01bcc:	ff d7                	call   *%edi
+69c01bce:	85 c0                	test   %eax,%eax
+69c01bd0:	75 0c                	jne    69c01bde <___mingwthr_run_key_dtors.part.0+0x4e>
+69c01bd2:	85 f6                	test   %esi,%esi
+69c01bd4:	74 08                	je     69c01bde <___mingwthr_run_key_dtors.part.0+0x4e>
+69c01bd6:	8b 43 04             	mov    0x4(%ebx),%eax
+69c01bd9:	89 34 24             	mov    %esi,(%esp)
+69c01bdc:	ff d0                	call   *%eax
+69c01bde:	8b 5b 08             	mov    0x8(%ebx),%ebx
+69c01be1:	85 db                	test   %ebx,%ebx
+69c01be3:	75 db                	jne    69c01bc0 <___mingwthr_run_key_dtors.part.0+0x30>
+69c01be5:	c7 04 24 a8 63 c0 69 	movl   $0x69c063a8,(%esp)
+69c01bec:	ff 15 2c 81 c0 69    	call   *0x69c0812c
+69c01bf2:	83 ec 04             	sub    $0x4,%esp
+69c01bf5:	83 c4 1c             	add    $0x1c,%esp
+69c01bf8:	5b                   	pop    %ebx
+69c01bf9:	5e                   	pop    %esi
+69c01bfa:	5f                   	pop    %edi
+69c01bfb:	5d                   	pop    %ebp
+69c01bfc:	c3                   	ret    
+69c01bfd:	8d 76 00             	lea    0x0(%esi),%esi
+
+69c01c00 <____w64_mingwthr_add_key_dtor>:
+69c01c00:	56                   	push   %esi
+69c01c01:	53                   	push   %ebx
+69c01c02:	31 f6                	xor    %esi,%esi
+69c01c04:	83 ec 14             	sub    $0x14,%esp
+69c01c07:	a1 a4 63 c0 69       	mov    0x69c063a4,%eax
+69c01c0c:	85 c0                	test   %eax,%eax
+69c01c0e:	75 10                	jne    69c01c20 <____w64_mingwthr_add_key_dtor+0x20>
+69c01c10:	83 c4 14             	add    $0x14,%esp
+69c01c13:	89 f0                	mov    %esi,%eax
+69c01c15:	5b                   	pop    %ebx
+69c01c16:	5e                   	pop    %esi
+69c01c17:	c3                   	ret    
+69c01c18:	90                   	nop
+69c01c19:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+69c01c20:	c7 44 24 04 0c 00 00 	movl   $0xc,0x4(%esp)
+69c01c27:	00 
+69c01c28:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
+69c01c2f:	e8 d4 05 00 00       	call   69c02208 <_calloc>
+69c01c34:	85 c0                	test   %eax,%eax
+69c01c36:	89 c3                	mov    %eax,%ebx
+69c01c38:	74 43                	je     69c01c7d <____w64_mingwthr_add_key_dtor+0x7d>
+69c01c3a:	8b 44 24 20          	mov    0x20(%esp),%eax
+69c01c3e:	c7 04 24 a8 63 c0 69 	movl   $0x69c063a8,(%esp)
+69c01c45:	89 03                	mov    %eax,(%ebx)
+69c01c47:	8b 44 24 24          	mov    0x24(%esp),%eax
+69c01c4b:	89 43 04             	mov    %eax,0x4(%ebx)
+69c01c4e:	ff 15 00 81 c0 69    	call   *0x69c08100
+69c01c54:	a1 a0 63 c0 69       	mov    0x69c063a0,%eax
+69c01c59:	83 ec 04             	sub    $0x4,%esp
+69c01c5c:	89 1d a0 63 c0 69    	mov    %ebx,0x69c063a0
+69c01c62:	c7 04 24 a8 63 c0 69 	movl   $0x69c063a8,(%esp)
+69c01c69:	89 43 08             	mov    %eax,0x8(%ebx)
+69c01c6c:	ff 15 2c 81 c0 69    	call   *0x69c0812c
+69c01c72:	83 ec 04             	sub    $0x4,%esp
+69c01c75:	89 f0                	mov    %esi,%eax
+69c01c77:	83 c4 14             	add    $0x14,%esp
+69c01c7a:	5b                   	pop    %ebx
+69c01c7b:	5e                   	pop    %esi
+69c01c7c:	c3                   	ret    
+69c01c7d:	be ff ff ff ff       	mov    $0xffffffff,%esi
+69c01c82:	eb 8c                	jmp    69c01c10 <____w64_mingwthr_add_key_dtor+0x10>
+69c01c84:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c01c8a:	8d bf 00 00 00 00    	lea    0x0(%edi),%edi
+
+69c01c90 <____w64_mingwthr_remove_key_dtor>:
+69c01c90:	53                   	push   %ebx
+69c01c91:	83 ec 18             	sub    $0x18,%esp
+69c01c94:	a1 a4 63 c0 69       	mov    0x69c063a4,%eax
+69c01c99:	8b 5c 24 20          	mov    0x20(%esp),%ebx
+69c01c9d:	85 c0                	test   %eax,%eax
+69c01c9f:	75 0f                	jne    69c01cb0 <____w64_mingwthr_remove_key_dtor+0x20>
+69c01ca1:	83 c4 18             	add    $0x18,%esp
+69c01ca4:	31 c0                	xor    %eax,%eax
+69c01ca6:	5b                   	pop    %ebx
+69c01ca7:	c3                   	ret    
+69c01ca8:	90                   	nop
+69c01ca9:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+69c01cb0:	c7 04 24 a8 63 c0 69 	movl   $0x69c063a8,(%esp)
+69c01cb7:	ff 15 00 81 c0 69    	call   *0x69c08100
+69c01cbd:	8b 15 a0 63 c0 69    	mov    0x69c063a0,%edx
+69c01cc3:	83 ec 04             	sub    $0x4,%esp
+69c01cc6:	85 d2                	test   %edx,%edx
+69c01cc8:	74 17                	je     69c01ce1 <____w64_mingwthr_remove_key_dtor+0x51>
+69c01cca:	8b 02                	mov    (%edx),%eax
+69c01ccc:	39 c3                	cmp    %eax,%ebx
+69c01cce:	75 0a                	jne    69c01cda <____w64_mingwthr_remove_key_dtor+0x4a>
+69c01cd0:	eb 3e                	jmp    69c01d10 <____w64_mingwthr_remove_key_dtor+0x80>
+69c01cd2:	8b 08                	mov    (%eax),%ecx
+69c01cd4:	39 d9                	cmp    %ebx,%ecx
+69c01cd6:	74 28                	je     69c01d00 <____w64_mingwthr_remove_key_dtor+0x70>
+69c01cd8:	89 c2                	mov    %eax,%edx
+69c01cda:	8b 42 08             	mov    0x8(%edx),%eax
+69c01cdd:	85 c0                	test   %eax,%eax
+69c01cdf:	75 f1                	jne    69c01cd2 <____w64_mingwthr_remove_key_dtor+0x42>
+69c01ce1:	c7 04 24 a8 63 c0 69 	movl   $0x69c063a8,(%esp)
+69c01ce8:	ff 15 2c 81 c0 69    	call   *0x69c0812c
+69c01cee:	83 ec 04             	sub    $0x4,%esp
+69c01cf1:	31 c0                	xor    %eax,%eax
+69c01cf3:	83 c4 18             	add    $0x18,%esp
+69c01cf6:	5b                   	pop    %ebx
+69c01cf7:	c3                   	ret    
+69c01cf8:	90                   	nop
+69c01cf9:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+69c01d00:	8b 48 08             	mov    0x8(%eax),%ecx
+69c01d03:	89 4a 08             	mov    %ecx,0x8(%edx)
+69c01d06:	89 04 24             	mov    %eax,(%esp)
+69c01d09:	e8 f2 04 00 00       	call   69c02200 <_free>
+69c01d0e:	eb d1                	jmp    69c01ce1 <____w64_mingwthr_remove_key_dtor+0x51>
+69c01d10:	8b 42 08             	mov    0x8(%edx),%eax
+69c01d13:	a3 a0 63 c0 69       	mov    %eax,0x69c063a0
+69c01d18:	89 d0                	mov    %edx,%eax
+69c01d1a:	eb ea                	jmp    69c01d06 <____w64_mingwthr_remove_key_dtor+0x76>
+69c01d1c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+
+69c01d20 <___mingw_TLScallback>:
+69c01d20:	53                   	push   %ebx
+69c01d21:	83 ec 18             	sub    $0x18,%esp
+69c01d24:	8b 44 24 24          	mov    0x24(%esp),%eax
+69c01d28:	83 f8 01             	cmp    $0x1,%eax
+69c01d2b:	0f 84 8f 00 00 00    	je     69c01dc0 <___mingw_TLScallback+0xa0>
+69c01d31:	72 2d                	jb     69c01d60 <___mingw_TLScallback+0x40>
+69c01d33:	83 f8 02             	cmp    $0x2,%eax
+69c01d36:	74 18                	je     69c01d50 <___mingw_TLScallback+0x30>
+69c01d38:	83 f8 03             	cmp    $0x3,%eax
+69c01d3b:	75 18                	jne    69c01d55 <___mingw_TLScallback+0x35>
+69c01d3d:	a1 a4 63 c0 69       	mov    0x69c063a4,%eax
+69c01d42:	85 c0                	test   %eax,%eax
+69c01d44:	74 0f                	je     69c01d55 <___mingw_TLScallback+0x35>
+69c01d46:	e8 45 fe ff ff       	call   69c01b90 <___mingwthr_run_key_dtors.part.0>
+69c01d4b:	eb 08                	jmp    69c01d55 <___mingw_TLScallback+0x35>
+69c01d4d:	8d 76 00             	lea    0x0(%esi),%esi
+69c01d50:	e8 1b 04 00 00       	call   69c02170 <__fpreset>
+69c01d55:	83 c4 18             	add    $0x18,%esp
+69c01d58:	b8 01 00 00 00       	mov    $0x1,%eax
+69c01d5d:	5b                   	pop    %ebx
+69c01d5e:	c3                   	ret    
+69c01d5f:	90                   	nop
+69c01d60:	a1 a4 63 c0 69       	mov    0x69c063a4,%eax
+69c01d65:	85 c0                	test   %eax,%eax
+69c01d67:	0f 85 85 00 00 00    	jne    69c01df2 <___mingw_TLScallback+0xd2>
+69c01d6d:	a1 a4 63 c0 69       	mov    0x69c063a4,%eax
+69c01d72:	83 f8 01             	cmp    $0x1,%eax
+69c01d75:	75 de                	jne    69c01d55 <___mingw_TLScallback+0x35>
+69c01d77:	a1 a0 63 c0 69       	mov    0x69c063a0,%eax
+69c01d7c:	85 c0                	test   %eax,%eax
+69c01d7e:	74 11                	je     69c01d91 <___mingw_TLScallback+0x71>
+69c01d80:	8b 58 08             	mov    0x8(%eax),%ebx
+69c01d83:	89 04 24             	mov    %eax,(%esp)
+69c01d86:	e8 75 04 00 00       	call   69c02200 <_free>
+69c01d8b:	85 db                	test   %ebx,%ebx
+69c01d8d:	89 d8                	mov    %ebx,%eax
+69c01d8f:	75 ef                	jne    69c01d80 <___mingw_TLScallback+0x60>
+69c01d91:	c7 05 a0 63 c0 69 00 	movl   $0x0,0x69c063a0
+69c01d98:	00 00 00 
+69c01d9b:	c7 05 a4 63 c0 69 00 	movl   $0x0,0x69c063a4
+69c01da2:	00 00 00 
+69c01da5:	c7 04 24 a8 63 c0 69 	movl   $0x69c063a8,(%esp)
+69c01dac:	ff 15 fc 80 c0 69    	call   *0x69c080fc
+69c01db2:	83 ec 04             	sub    $0x4,%esp
+69c01db5:	eb 9e                	jmp    69c01d55 <___mingw_TLScallback+0x35>
+69c01db7:	89 f6                	mov    %esi,%esi
+69c01db9:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+69c01dc0:	a1 a4 63 c0 69       	mov    0x69c063a4,%eax
+69c01dc5:	85 c0                	test   %eax,%eax
+69c01dc7:	74 17                	je     69c01de0 <___mingw_TLScallback+0xc0>
+69c01dc9:	c7 05 a4 63 c0 69 01 	movl   $0x1,0x69c063a4
+69c01dd0:	00 00 00 
+69c01dd3:	83 c4 18             	add    $0x18,%esp
+69c01dd6:	b8 01 00 00 00       	mov    $0x1,%eax
+69c01ddb:	5b                   	pop    %ebx
+69c01ddc:	c3                   	ret    
+69c01ddd:	8d 76 00             	lea    0x0(%esi),%esi
+69c01de0:	c7 04 24 a8 63 c0 69 	movl   $0x69c063a8,(%esp)
+69c01de7:	ff 15 28 81 c0 69    	call   *0x69c08128
+69c01ded:	83 ec 04             	sub    $0x4,%esp
+69c01df0:	eb d7                	jmp    69c01dc9 <___mingw_TLScallback+0xa9>
+69c01df2:	e8 99 fd ff ff       	call   69c01b90 <___mingwthr_run_key_dtors.part.0>
+69c01df7:	e9 71 ff ff ff       	jmp    69c01d6d <___mingw_TLScallback+0x4d>
+69c01dfc:	90                   	nop
+69c01dfd:	90                   	nop
+69c01dfe:	90                   	nop
+69c01dff:	90                   	nop
+
+69c01e00 <__ValidateImageBase.part.0>:
+69c01e00:	03 40 3c             	add    0x3c(%eax),%eax
+69c01e03:	81 38 50 45 00 00    	cmpl   $0x4550,(%eax)
+69c01e09:	74 05                	je     69c01e10 <__ValidateImageBase.part.0+0x10>
+69c01e0b:	31 c0                	xor    %eax,%eax
+69c01e0d:	c3                   	ret    
+69c01e0e:	66 90                	xchg   %ax,%ax
+69c01e10:	66 81 78 18 0b 01    	cmpw   $0x10b,0x18(%eax)
+69c01e16:	0f 94 c0             	sete   %al
+69c01e19:	0f b6 c0             	movzbl %al,%eax
+69c01e1c:	c3                   	ret    
+69c01e1d:	8d 76 00             	lea    0x0(%esi),%esi
+
+69c01e20 <__ValidateImageBase>:
+69c01e20:	8b 44 24 04          	mov    0x4(%esp),%eax
+69c01e24:	66 81 38 4d 5a       	cmpw   $0x5a4d,(%eax)
+69c01e29:	74 05                	je     69c01e30 <__ValidateImageBase+0x10>
+69c01e2b:	31 c0                	xor    %eax,%eax
+69c01e2d:	c3                   	ret    
+69c01e2e:	66 90                	xchg   %ax,%ax
+69c01e30:	eb ce                	jmp    69c01e00 <__ValidateImageBase.part.0>
+69c01e32:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+69c01e39:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+69c01e40 <__FindPESection>:
+69c01e40:	56                   	push   %esi
+69c01e41:	53                   	push   %ebx
+69c01e42:	8b 54 24 0c          	mov    0xc(%esp),%edx
+69c01e46:	8b 5c 24 10          	mov    0x10(%esp),%ebx
+69c01e4a:	03 52 3c             	add    0x3c(%edx),%edx
+69c01e4d:	0f b7 72 06          	movzwl 0x6(%edx),%esi
+69c01e51:	0f b7 42 14          	movzwl 0x14(%edx),%eax
+69c01e55:	85 f6                	test   %esi,%esi
+69c01e57:	8d 44 02 18          	lea    0x18(%edx,%eax,1),%eax
+69c01e5b:	74 1b                	je     69c01e78 <__FindPESection+0x38>
+69c01e5d:	31 c9                	xor    %ecx,%ecx
+69c01e5f:	90                   	nop
+69c01e60:	8b 50 0c             	mov    0xc(%eax),%edx
+69c01e63:	39 da                	cmp    %ebx,%edx
+69c01e65:	77 07                	ja     69c01e6e <__FindPESection+0x2e>
+69c01e67:	03 50 08             	add    0x8(%eax),%edx
+69c01e6a:	39 da                	cmp    %ebx,%edx
+69c01e6c:	77 0c                	ja     69c01e7a <__FindPESection+0x3a>
+69c01e6e:	83 c1 01             	add    $0x1,%ecx
+69c01e71:	83 c0 28             	add    $0x28,%eax
+69c01e74:	39 f1                	cmp    %esi,%ecx
+69c01e76:	75 e8                	jne    69c01e60 <__FindPESection+0x20>
+69c01e78:	31 c0                	xor    %eax,%eax
+69c01e7a:	5b                   	pop    %ebx
+69c01e7b:	5e                   	pop    %esi
+69c01e7c:	c3                   	ret    
+69c01e7d:	8d 76 00             	lea    0x0(%esi),%esi
+
+69c01e80 <__FindPESectionByName>:
+69c01e80:	55                   	push   %ebp
+69c01e81:	57                   	push   %edi
+69c01e82:	56                   	push   %esi
+69c01e83:	53                   	push   %ebx
+69c01e84:	83 ec 1c             	sub    $0x1c,%esp
+69c01e87:	8b 7c 24 30          	mov    0x30(%esp),%edi
+69c01e8b:	89 3c 24             	mov    %edi,(%esp)
+69c01e8e:	e8 5d 03 00 00       	call   69c021f0 <_strlen>
+69c01e93:	83 f8 08             	cmp    $0x8,%eax
+69c01e96:	77 68                	ja     69c01f00 <__FindPESectionByName+0x80>
+69c01e98:	66 81 3d 00 00 c0 69 	cmpw   $0x5a4d,0x69c00000
+69c01e9f:	4d 5a 
+69c01ea1:	75 5d                	jne    69c01f00 <__FindPESectionByName+0x80>
+69c01ea3:	b8 00 00 c0 69       	mov    $0x69c00000,%eax
+69c01ea8:	e8 53 ff ff ff       	call   69c01e00 <__ValidateImageBase.part.0>
+69c01ead:	85 c0                	test   %eax,%eax
+69c01eaf:	74 4f                	je     69c01f00 <__FindPESectionByName+0x80>
+69c01eb1:	a1 3c 00 c0 69       	mov    0x69c0003c,%eax
+69c01eb6:	0f b7 90 14 00 c0 69 	movzwl 0x69c00014(%eax),%edx
+69c01ebd:	05 00 00 c0 69       	add    $0x69c00000,%eax
+69c01ec2:	0f b7 68 06          	movzwl 0x6(%eax),%ebp
+69c01ec6:	8d 5c 10 18          	lea    0x18(%eax,%edx,1),%ebx
+69c01eca:	85 ed                	test   %ebp,%ebp
+69c01ecc:	74 32                	je     69c01f00 <__FindPESectionByName+0x80>
+69c01ece:	31 f6                	xor    %esi,%esi
+69c01ed0:	eb 0a                	jmp    69c01edc <__FindPESectionByName+0x5c>
+69c01ed2:	83 c6 01             	add    $0x1,%esi
+69c01ed5:	83 c3 28             	add    $0x28,%ebx
+69c01ed8:	39 ee                	cmp    %ebp,%esi
+69c01eda:	74 24                	je     69c01f00 <__FindPESectionByName+0x80>
+69c01edc:	c7 44 24 08 08 00 00 	movl   $0x8,0x8(%esp)
+69c01ee3:	00 
+69c01ee4:	89 7c 24 04          	mov    %edi,0x4(%esp)
+69c01ee8:	89 1c 24             	mov    %ebx,(%esp)
+69c01eeb:	e8 f8 02 00 00       	call   69c021e8 <_strncmp>
+69c01ef0:	85 c0                	test   %eax,%eax
+69c01ef2:	75 de                	jne    69c01ed2 <__FindPESectionByName+0x52>
+69c01ef4:	83 c4 1c             	add    $0x1c,%esp
+69c01ef7:	89 d8                	mov    %ebx,%eax
+69c01ef9:	5b                   	pop    %ebx
+69c01efa:	5e                   	pop    %esi
+69c01efb:	5f                   	pop    %edi
+69c01efc:	5d                   	pop    %ebp
+69c01efd:	c3                   	ret    
+69c01efe:	66 90                	xchg   %ax,%ax
+69c01f00:	83 c4 1c             	add    $0x1c,%esp
+69c01f03:	31 db                	xor    %ebx,%ebx
+69c01f05:	89 d8                	mov    %ebx,%eax
+69c01f07:	5b                   	pop    %ebx
+69c01f08:	5e                   	pop    %esi
+69c01f09:	5f                   	pop    %edi
+69c01f0a:	5d                   	pop    %ebp
+69c01f0b:	c3                   	ret    
+69c01f0c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+
+69c01f10 <___mingw_GetSectionForAddress>:
+69c01f10:	66 81 3d 00 00 c0 69 	cmpw   $0x5a4d,0x69c00000
+69c01f17:	4d 5a 
+69c01f19:	75 57                	jne    69c01f72 <___mingw_GetSectionForAddress+0x62>
+69c01f1b:	56                   	push   %esi
+69c01f1c:	53                   	push   %ebx
+69c01f1d:	b8 00 00 c0 69       	mov    $0x69c00000,%eax
+69c01f22:	e8 d9 fe ff ff       	call   69c01e00 <__ValidateImageBase.part.0>
+69c01f27:	85 c0                	test   %eax,%eax
+69c01f29:	74 42                	je     69c01f6d <___mingw_GetSectionForAddress+0x5d>
+69c01f2b:	a1 3c 00 c0 69       	mov    0x69c0003c,%eax
+69c01f30:	8b 5c 24 0c          	mov    0xc(%esp),%ebx
+69c01f34:	8d 90 00 00 c0 69    	lea    0x69c00000(%eax),%edx
+69c01f3a:	0f b7 80 14 00 c0 69 	movzwl 0x69c00014(%eax),%eax
+69c01f41:	81 eb 00 00 c0 69    	sub    $0x69c00000,%ebx
+69c01f47:	0f b7 72 06          	movzwl 0x6(%edx),%esi
+69c01f4b:	8d 44 02 18          	lea    0x18(%edx,%eax,1),%eax
+69c01f4f:	85 f6                	test   %esi,%esi
+69c01f51:	74 1a                	je     69c01f6d <___mingw_GetSectionForAddress+0x5d>
+69c01f53:	31 c9                	xor    %ecx,%ecx
+69c01f55:	8b 50 0c             	mov    0xc(%eax),%edx
+69c01f58:	39 d3                	cmp    %edx,%ebx
+69c01f5a:	72 07                	jb     69c01f63 <___mingw_GetSectionForAddress+0x53>
+69c01f5c:	03 50 08             	add    0x8(%eax),%edx
+69c01f5f:	39 d3                	cmp    %edx,%ebx
+69c01f61:	72 0c                	jb     69c01f6f <___mingw_GetSectionForAddress+0x5f>
+69c01f63:	83 c1 01             	add    $0x1,%ecx
+69c01f66:	83 c0 28             	add    $0x28,%eax
+69c01f69:	39 f1                	cmp    %esi,%ecx
+69c01f6b:	75 e8                	jne    69c01f55 <___mingw_GetSectionForAddress+0x45>
+69c01f6d:	31 c0                	xor    %eax,%eax
+69c01f6f:	5b                   	pop    %ebx
+69c01f70:	5e                   	pop    %esi
+69c01f71:	c3                   	ret    
+69c01f72:	31 c0                	xor    %eax,%eax
+69c01f74:	c3                   	ret    
+69c01f75:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c01f79:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+69c01f80 <___mingw_GetSectionCount>:
+69c01f80:	31 d2                	xor    %edx,%edx
+69c01f82:	66 81 3d 00 00 c0 69 	cmpw   $0x5a4d,0x69c00000
+69c01f89:	4d 5a 
+69c01f8b:	74 03                	je     69c01f90 <___mingw_GetSectionCount+0x10>
+69c01f8d:	89 d0                	mov    %edx,%eax
+69c01f8f:	c3                   	ret    
+69c01f90:	b8 00 00 c0 69       	mov    $0x69c00000,%eax
+69c01f95:	e8 66 fe ff ff       	call   69c01e00 <__ValidateImageBase.part.0>
+69c01f9a:	85 c0                	test   %eax,%eax
+69c01f9c:	74 ef                	je     69c01f8d <___mingw_GetSectionCount+0xd>
+69c01f9e:	a1 3c 00 c0 69       	mov    0x69c0003c,%eax
+69c01fa3:	0f b7 90 06 00 c0 69 	movzwl 0x69c00006(%eax),%edx
+69c01faa:	89 d0                	mov    %edx,%eax
+69c01fac:	c3                   	ret    
+69c01fad:	8d 76 00             	lea    0x0(%esi),%esi
+
+69c01fb0 <__FindPESectionExec>:
+69c01fb0:	66 81 3d 00 00 c0 69 	cmpw   $0x5a4d,0x69c00000
+69c01fb7:	4d 5a 
+69c01fb9:	53                   	push   %ebx
+69c01fba:	8b 4c 24 08          	mov    0x8(%esp),%ecx
+69c01fbe:	75 47                	jne    69c02007 <__FindPESectionExec+0x57>
+69c01fc0:	b8 00 00 c0 69       	mov    $0x69c00000,%eax
+69c01fc5:	e8 36 fe ff ff       	call   69c01e00 <__ValidateImageBase.part.0>
+69c01fca:	85 c0                	test   %eax,%eax
+69c01fcc:	74 39                	je     69c02007 <__FindPESectionExec+0x57>
+69c01fce:	a1 3c 00 c0 69       	mov    0x69c0003c,%eax
+69c01fd3:	8d 90 00 00 c0 69    	lea    0x69c00000(%eax),%edx
+69c01fd9:	0f b7 80 14 00 c0 69 	movzwl 0x69c00014(%eax),%eax
+69c01fe0:	0f b7 5a 06          	movzwl 0x6(%edx),%ebx
+69c01fe4:	8d 44 02 18          	lea    0x18(%edx,%eax,1),%eax
+69c01fe8:	85 db                	test   %ebx,%ebx
+69c01fea:	74 1b                	je     69c02007 <__FindPESectionExec+0x57>
+69c01fec:	31 d2                	xor    %edx,%edx
+69c01fee:	66 90                	xchg   %ax,%ax
+69c01ff0:	f6 40 27 20          	testb  $0x20,0x27(%eax)
+69c01ff4:	74 07                	je     69c01ffd <__FindPESectionExec+0x4d>
+69c01ff6:	85 c9                	test   %ecx,%ecx
+69c01ff8:	74 0f                	je     69c02009 <__FindPESectionExec+0x59>
+69c01ffa:	83 e9 01             	sub    $0x1,%ecx
+69c01ffd:	83 c2 01             	add    $0x1,%edx
+69c02000:	83 c0 28             	add    $0x28,%eax
+69c02003:	39 da                	cmp    %ebx,%edx
+69c02005:	75 e9                	jne    69c01ff0 <__FindPESectionExec+0x40>
+69c02007:	31 c0                	xor    %eax,%eax
+69c02009:	5b                   	pop    %ebx
+69c0200a:	c3                   	ret    
+69c0200b:	90                   	nop
+69c0200c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+
+69c02010 <__GetPEImageBase>:
+69c02010:	66 81 3d 00 00 c0 69 	cmpw   $0x5a4d,0x69c00000
+69c02017:	4d 5a 
+69c02019:	75 1a                	jne    69c02035 <__GetPEImageBase+0x25>
+69c0201b:	b8 00 00 c0 69       	mov    $0x69c00000,%eax
+69c02020:	e8 db fd ff ff       	call   69c01e00 <__ValidateImageBase.part.0>
+69c02025:	ba 00 00 00 00       	mov    $0x0,%edx
+69c0202a:	85 c0                	test   %eax,%eax
+69c0202c:	b8 00 00 c0 69       	mov    $0x69c00000,%eax
+69c02031:	0f 44 c2             	cmove  %edx,%eax
+69c02034:	c3                   	ret    
+69c02035:	31 c0                	xor    %eax,%eax
+69c02037:	c3                   	ret    
+69c02038:	90                   	nop
+69c02039:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
+
+69c02040 <__IsNonwritableInCurrentImage>:
+69c02040:	31 c0                	xor    %eax,%eax
+69c02042:	66 81 3d 00 00 c0 69 	cmpw   $0x5a4d,0x69c00000
+69c02049:	4d 5a 
+69c0204b:	74 03                	je     69c02050 <__IsNonwritableInCurrentImage+0x10>
+69c0204d:	f3 c3                	repz ret 
+69c0204f:	90                   	nop
+69c02050:	56                   	push   %esi
+69c02051:	53                   	push   %ebx
+69c02052:	b8 00 00 c0 69       	mov    $0x69c00000,%eax
+69c02057:	e8 a4 fd ff ff       	call   69c01e00 <__ValidateImageBase.part.0>
+69c0205c:	85 c0                	test   %eax,%eax
+69c0205e:	74 4a                	je     69c020aa <__IsNonwritableInCurrentImage+0x6a>
+69c02060:	a1 3c 00 c0 69       	mov    0x69c0003c,%eax
+69c02065:	8b 5c 24 0c          	mov    0xc(%esp),%ebx
+69c02069:	8d 90 00 00 c0 69    	lea    0x69c00000(%eax),%edx
+69c0206f:	0f b7 80 14 00 c0 69 	movzwl 0x69c00014(%eax),%eax
+69c02076:	81 eb 00 00 c0 69    	sub    $0x69c00000,%ebx
+69c0207c:	0f b7 72 06          	movzwl 0x6(%edx),%esi
+69c02080:	8d 44 02 18          	lea    0x18(%edx,%eax,1),%eax
+69c02084:	85 f6                	test   %esi,%esi
+69c02086:	74 20                	je     69c020a8 <__IsNonwritableInCurrentImage+0x68>
+69c02088:	31 c9                	xor    %ecx,%ecx
+69c0208a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c02090:	8b 50 0c             	mov    0xc(%eax),%edx
+69c02093:	39 d3                	cmp    %edx,%ebx
+69c02095:	72 07                	jb     69c0209e <__IsNonwritableInCurrentImage+0x5e>
+69c02097:	03 50 08             	add    0x8(%eax),%edx
+69c0209a:	39 d3                	cmp    %edx,%ebx
+69c0209c:	72 12                	jb     69c020b0 <__IsNonwritableInCurrentImage+0x70>
+69c0209e:	83 c1 01             	add    $0x1,%ecx
+69c020a1:	83 c0 28             	add    $0x28,%eax
+69c020a4:	39 f1                	cmp    %esi,%ecx
+69c020a6:	75 e8                	jne    69c02090 <__IsNonwritableInCurrentImage+0x50>
+69c020a8:	31 c0                	xor    %eax,%eax
+69c020aa:	5b                   	pop    %ebx
+69c020ab:	5e                   	pop    %esi
+69c020ac:	c3                   	ret    
+69c020ad:	8d 76 00             	lea    0x0(%esi),%esi
+69c020b0:	8b 40 24             	mov    0x24(%eax),%eax
+69c020b3:	5b                   	pop    %ebx
+69c020b4:	5e                   	pop    %esi
+69c020b5:	f7 d0                	not    %eax
+69c020b7:	c1 e8 1f             	shr    $0x1f,%eax
+69c020ba:	c3                   	ret    
+69c020bb:	90                   	nop
+69c020bc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+
+69c020c0 <___mingw_enum_import_library_names>:
+69c020c0:	66 81 3d 00 00 c0 69 	cmpw   $0x5a4d,0x69c00000
+69c020c7:	4d 5a 
+69c020c9:	57                   	push   %edi
+69c020ca:	56                   	push   %esi
+69c020cb:	53                   	push   %ebx
+69c020cc:	8b 5c 24 10          	mov    0x10(%esp),%ebx
+69c020d0:	75 56                	jne    69c02128 <___mingw_enum_import_library_names+0x68>
+69c020d2:	b8 00 00 c0 69       	mov    $0x69c00000,%eax
+69c020d7:	e8 24 fd ff ff       	call   69c01e00 <__ValidateImageBase.part.0>
+69c020dc:	85 c0                	test   %eax,%eax
+69c020de:	74 48                	je     69c02128 <___mingw_enum_import_library_names+0x68>
+69c020e0:	a1 3c 00 c0 69       	mov    0x69c0003c,%eax
+69c020e5:	8b 90 80 00 c0 69    	mov    0x69c00080(%eax),%edx
+69c020eb:	05 00 00 c0 69       	add    $0x69c00000,%eax
+69c020f0:	85 d2                	test   %edx,%edx
+69c020f2:	74 34                	je     69c02128 <___mingw_enum_import_library_names+0x68>
+69c020f4:	0f b7 78 06          	movzwl 0x6(%eax),%edi
+69c020f8:	0f b7 48 14          	movzwl 0x14(%eax),%ecx
+69c020fc:	85 ff                	test   %edi,%edi
+69c020fe:	8d 4c 08 18          	lea    0x18(%eax,%ecx,1),%ecx
+69c02102:	74 24                	je     69c02128 <___mingw_enum_import_library_names+0x68>
+69c02104:	31 f6                	xor    %esi,%esi
+69c02106:	8d 76 00             	lea    0x0(%esi),%esi
+69c02109:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+69c02110:	8b 41 0c             	mov    0xc(%ecx),%eax
+69c02113:	39 c2                	cmp    %eax,%edx
+69c02115:	72 07                	jb     69c0211e <___mingw_enum_import_library_names+0x5e>
+69c02117:	03 41 08             	add    0x8(%ecx),%eax
+69c0211a:	39 c2                	cmp    %eax,%edx
+69c0211c:	72 12                	jb     69c02130 <___mingw_enum_import_library_names+0x70>
+69c0211e:	83 c6 01             	add    $0x1,%esi
+69c02121:	83 c1 28             	add    $0x28,%ecx
+69c02124:	39 fe                	cmp    %edi,%esi
+69c02126:	75 e8                	jne    69c02110 <___mingw_enum_import_library_names+0x50>
+69c02128:	5b                   	pop    %ebx
+69c02129:	31 c0                	xor    %eax,%eax
+69c0212b:	5e                   	pop    %esi
+69c0212c:	5f                   	pop    %edi
+69c0212d:	c3                   	ret    
+69c0212e:	66 90                	xchg   %ax,%ax
+69c02130:	89 d0                	mov    %edx,%eax
+69c02132:	05 00 00 c0 69       	add    $0x69c00000,%eax
+69c02137:	75 0d                	jne    69c02146 <___mingw_enum_import_library_names+0x86>
+69c02139:	eb ed                	jmp    69c02128 <___mingw_enum_import_library_names+0x68>
+69c0213b:	90                   	nop
+69c0213c:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c02140:	83 eb 01             	sub    $0x1,%ebx
+69c02143:	83 c0 14             	add    $0x14,%eax
+69c02146:	8b 48 04             	mov    0x4(%eax),%ecx
+69c02149:	85 c9                	test   %ecx,%ecx
+69c0214b:	75 07                	jne    69c02154 <___mingw_enum_import_library_names+0x94>
+69c0214d:	8b 50 0c             	mov    0xc(%eax),%edx
+69c02150:	85 d2                	test   %edx,%edx
+69c02152:	74 d4                	je     69c02128 <___mingw_enum_import_library_names+0x68>
+69c02154:	85 db                	test   %ebx,%ebx
+69c02156:	7f e8                	jg     69c02140 <___mingw_enum_import_library_names+0x80>
+69c02158:	8b 40 0c             	mov    0xc(%eax),%eax
+69c0215b:	5b                   	pop    %ebx
+69c0215c:	5e                   	pop    %esi
+69c0215d:	05 00 00 c0 69       	add    $0x69c00000,%eax
+69c02162:	5f                   	pop    %edi
+69c02163:	c3                   	ret    
+69c02164:	90                   	nop
+69c02165:	90                   	nop
+69c02166:	90                   	nop
+69c02167:	90                   	nop
+69c02168:	90                   	nop
+69c02169:	90                   	nop
+69c0216a:	90                   	nop
+69c0216b:	90                   	nop
+69c0216c:	90                   	nop
+69c0216d:	90                   	nop
+69c0216e:	90                   	nop
+69c0216f:	90                   	nop
+
+69c02170 <__fpreset>:
+69c02170:	db e3                	fninit 
+69c02172:	c3                   	ret    
+69c02173:	90                   	nop
+69c02174:	90                   	nop
+69c02175:	90                   	nop
+69c02176:	90                   	nop
+69c02177:	90                   	nop
+69c02178:	90                   	nop
+69c02179:	90                   	nop
+69c0217a:	90                   	nop
+69c0217b:	90                   	nop
+69c0217c:	90                   	nop
+69c0217d:	90                   	nop
+69c0217e:	90                   	nop
+69c0217f:	90                   	nop
+
+69c02180 <___register_frame_info>:
+69c02180:	ff 25 f4 80 c0 69    	jmp    *0x69c080f4
+69c02186:	90                   	nop
+69c02187:	90                   	nop
+
+69c02188 <___deregister_frame_info>:
+69c02188:	ff 25 f0 80 c0 69    	jmp    *0x69c080f0
+69c0218e:	90                   	nop
+69c0218f:	90                   	nop
+
+69c02190 <___chkstk_ms>:
+69c02190:	51                   	push   %ecx
+69c02191:	50                   	push   %eax
+69c02192:	3d 00 10 00 00       	cmp    $0x1000,%eax
+69c02197:	8d 4c 24 0c          	lea    0xc(%esp),%ecx
+69c0219b:	72 15                	jb     69c021b2 <___chkstk_ms+0x22>
+69c0219d:	81 e9 00 10 00 00    	sub    $0x1000,%ecx
+69c021a3:	83 09 00             	orl    $0x0,(%ecx)
+69c021a6:	2d 00 10 00 00       	sub    $0x1000,%eax
+69c021ab:	3d 00 10 00 00       	cmp    $0x1000,%eax
+69c021b0:	77 eb                	ja     69c0219d <___chkstk_ms+0xd>
+69c021b2:	29 c1                	sub    %eax,%ecx
+69c021b4:	83 09 00             	orl    $0x0,(%ecx)
+69c021b7:	58                   	pop    %eax
+69c021b8:	59                   	pop    %ecx
+69c021b9:	c3                   	ret    
+69c021ba:	90                   	nop
+69c021bb:	90                   	nop
+
+69c021bc <.text>:
+69c021bc:	66 90                	xchg   %ax,%ax
+69c021be:	66 90                	xchg   %ax,%ax
+
+69c021c0 <_DllEntryPoint@12>:
+69c021c0:	b8 01 00 00 00       	mov    $0x1,%eax
+69c021c5:	c2 0c 00             	ret    $0xc
+69c021c8:	90                   	nop
+69c021c9:	90                   	nop
+69c021ca:	90                   	nop
+69c021cb:	90                   	nop
+69c021cc:	90                   	nop
+69c021cd:	90                   	nop
+69c021ce:	90                   	nop
+69c021cf:	90                   	nop
+
+69c021d0 <_DllMain@12>:
+69c021d0:	b8 01 00 00 00       	mov    $0x1,%eax
+69c021d5:	c2 0c 00             	ret    $0xc
+69c021d8:	90                   	nop
+69c021d9:	90                   	nop
+69c021da:	90                   	nop
+69c021db:	90                   	nop
+69c021dc:	90                   	nop
+69c021dd:	90                   	nop
+69c021de:	90                   	nop
+69c021df:	90                   	nop
+
+69c021e0 <_vfprintf>:
+69c021e0:	ff 25 88 81 c0 69    	jmp    *0x69c08188
+69c021e6:	90                   	nop
+69c021e7:	90                   	nop
+
+69c021e8 <_strncmp>:
+69c021e8:	ff 25 84 81 c0 69    	jmp    *0x69c08184
+69c021ee:	90                   	nop
+69c021ef:	90                   	nop
+
+69c021f0 <_strlen>:
+69c021f0:	ff 25 80 81 c0 69    	jmp    *0x69c08180
+69c021f6:	90                   	nop
+69c021f7:	90                   	nop
+
+69c021f8 <_fwrite>:
+69c021f8:	ff 25 78 81 c0 69    	jmp    *0x69c08178
+69c021fe:	90                   	nop
+69c021ff:	90                   	nop
+
+69c02200 <_free>:
+69c02200:	ff 25 74 81 c0 69    	jmp    *0x69c08174
+69c02206:	90                   	nop
+69c02207:	90                   	nop
+
+69c02208 <_calloc>:
+69c02208:	ff 25 70 81 c0 69    	jmp    *0x69c08170
+69c0220e:	90                   	nop
+69c0220f:	90                   	nop
+
+69c02210 <_abort>:
+69c02210:	ff 25 6c 81 c0 69    	jmp    *0x69c0816c
+69c02216:	90                   	nop
+69c02217:	90                   	nop
+
+69c02218 <__initterm>:
+69c02218:	ff 25 5c 81 c0 69    	jmp    *0x69c0815c
+69c0221e:	90                   	nop
+69c0221f:	90                   	nop
+
+69c02220 <__amsg_exit>:
+69c02220:	ff 25 58 81 c0 69    	jmp    *0x69c08158
+69c02226:	90                   	nop
+69c02227:	90                   	nop
+69c02228:	66 90                	xchg   %ax,%ax
+69c0222a:	66 90                	xchg   %ax,%ax
+69c0222c:	66 90                	xchg   %ax,%ax
+69c0222e:	66 90                	xchg   %ax,%ax
+
+69c02230 <__initialize_onexit_table>:
+69c02230:	8b 44 24 04          	mov    0x4(%esp),%eax
+69c02234:	85 c0                	test   %eax,%eax
+69c02236:	74 17                	je     69c0224f <__initialize_onexit_table+0x1f>
+69c02238:	c7 40 08 00 00 00 00 	movl   $0x0,0x8(%eax)
+69c0223f:	c7 40 04 00 00 00 00 	movl   $0x0,0x4(%eax)
+69c02246:	c7 00 00 00 00 00    	movl   $0x0,(%eax)
+69c0224c:	31 c0                	xor    %eax,%eax
+69c0224e:	c3                   	ret    
+69c0224f:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+69c02254:	c3                   	ret    
+69c02255:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c02259:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+69c02260 <__register_onexit_function>:
+69c02260:	57                   	push   %edi
+69c02261:	56                   	push   %esi
+69c02262:	53                   	push   %ebx
+69c02263:	83 ec 10             	sub    $0x10,%esp
+69c02266:	8b 5c 24 20          	mov    0x20(%esp),%ebx
+69c0226a:	85 db                	test   %ebx,%ebx
+69c0226c:	0f 84 9e 00 00 00    	je     69c02310 <__register_onexit_function+0xb0>
+69c02272:	c7 04 24 08 00 00 00 	movl   $0x8,(%esp)
+69c02279:	e8 42 01 00 00       	call   69c023c0 <__lock>
+69c0227e:	8b 03                	mov    (%ebx),%eax
+69c02280:	85 c0                	test   %eax,%eax
+69c02282:	74 5c                	je     69c022e0 <__register_onexit_function+0x80>
+69c02284:	8b 7b 04             	mov    0x4(%ebx),%edi
+69c02287:	8b 43 08             	mov    0x8(%ebx),%eax
+69c0228a:	39 f8                	cmp    %edi,%eax
+69c0228c:	74 22                	je     69c022b0 <__register_onexit_function+0x50>
+69c0228e:	8d 47 04             	lea    0x4(%edi),%eax
+69c02291:	89 43 04             	mov    %eax,0x4(%ebx)
+69c02294:	8b 44 24 24          	mov    0x24(%esp),%eax
+69c02298:	89 07                	mov    %eax,(%edi)
+69c0229a:	c7 04 24 08 00 00 00 	movl   $0x8,(%esp)
+69c022a1:	e8 12 01 00 00       	call   69c023b8 <__unlock>
+69c022a6:	31 c0                	xor    %eax,%eax
+69c022a8:	83 c4 10             	add    $0x10,%esp
+69c022ab:	5b                   	pop    %ebx
+69c022ac:	5e                   	pop    %esi
+69c022ad:	5f                   	pop    %edi
+69c022ae:	c3                   	ret    
+69c022af:	90                   	nop
+69c022b0:	8b 0b                	mov    (%ebx),%ecx
+69c022b2:	29 cf                	sub    %ecx,%edi
+69c022b4:	89 0c 24             	mov    %ecx,(%esp)
+69c022b7:	89 f8                	mov    %edi,%eax
+69c022b9:	c1 f8 02             	sar    $0x2,%eax
+69c022bc:	8d 34 c5 00 00 00 00 	lea    0x0(,%eax,8),%esi
+69c022c3:	89 74 24 04          	mov    %esi,0x4(%esp)
+69c022c7:	e8 e4 00 00 00       	call   69c023b0 <_realloc>
+69c022cc:	85 c0                	test   %eax,%eax
+69c022ce:	74 47                	je     69c02317 <__register_onexit_function+0xb7>
+69c022d0:	89 03                	mov    %eax,(%ebx)
+69c022d2:	01 c7                	add    %eax,%edi
+69c022d4:	01 f0                	add    %esi,%eax
+69c022d6:	89 43 08             	mov    %eax,0x8(%ebx)
+69c022d9:	eb b3                	jmp    69c0228e <__register_onexit_function+0x2e>
+69c022db:	90                   	nop
+69c022dc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+69c022e0:	c7 44 24 04 04 00 00 	movl   $0x4,0x4(%esp)
+69c022e7:	00 
+69c022e8:	c7 04 24 20 00 00 00 	movl   $0x20,(%esp)
+69c022ef:	e8 14 ff ff ff       	call   69c02208 <_calloc>
+69c022f4:	85 c0                	test   %eax,%eax
+69c022f6:	89 c7                	mov    %eax,%edi
+69c022f8:	89 03                	mov    %eax,(%ebx)
+69c022fa:	74 1b                	je     69c02317 <__register_onexit_function+0xb7>
+69c022fc:	89 43 04             	mov    %eax,0x4(%ebx)
+69c022ff:	8d 80 80 00 00 00    	lea    0x80(%eax),%eax
+69c02305:	89 43 08             	mov    %eax,0x8(%ebx)
+69c02308:	eb 80                	jmp    69c0228a <__register_onexit_function+0x2a>
+69c0230a:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+69c02310:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+69c02315:	eb 91                	jmp    69c022a8 <__register_onexit_function+0x48>
+69c02317:	c7 04 24 08 00 00 00 	movl   $0x8,(%esp)
+69c0231e:	e8 95 00 00 00       	call   69c023b8 <__unlock>
+69c02323:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+69c02328:	e9 7b ff ff ff       	jmp    69c022a8 <__register_onexit_function+0x48>
+69c0232d:	8d 76 00             	lea    0x0(%esi),%esi
+
+69c02330 <__execute_onexit_table>:
+69c02330:	57                   	push   %edi
+69c02331:	56                   	push   %esi
+69c02332:	53                   	push   %ebx
+69c02333:	83 ec 10             	sub    $0x10,%esp
+69c02336:	8b 7c 24 20          	mov    0x20(%esp),%edi
+69c0233a:	c7 04 24 08 00 00 00 	movl   $0x8,(%esp)
+69c02341:	e8 7a 00 00 00       	call   69c023c0 <__lock>
+69c02346:	8b 37                	mov    (%edi),%esi
+69c02348:	8b 5f 04             	mov    0x4(%edi),%ebx
+69c0234b:	c7 47 08 00 00 00 00 	movl   $0x0,0x8(%edi)
+69c02352:	c7 47 04 00 00 00 00 	movl   $0x0,0x4(%edi)
+69c02359:	c7 07 00 00 00 00    	movl   $0x0,(%edi)
+69c0235f:	c7 04 24 08 00 00 00 	movl   $0x8,(%esp)
+69c02366:	e8 4d 00 00 00       	call   69c023b8 <__unlock>
+69c0236b:	85 f6                	test   %esi,%esi
+69c0236d:	74 1e                	je     69c0238d <__execute_onexit_table+0x5d>
+69c0236f:	83 eb 04             	sub    $0x4,%ebx
+69c02372:	39 de                	cmp    %ebx,%esi
+69c02374:	77 0f                	ja     69c02385 <__execute_onexit_table+0x55>
+69c02376:	8b 03                	mov    (%ebx),%eax
+69c02378:	85 c0                	test   %eax,%eax
+69c0237a:	74 f3                	je     69c0236f <__execute_onexit_table+0x3f>
+69c0237c:	83 eb 04             	sub    $0x4,%ebx
+69c0237f:	ff d0                	call   *%eax
+69c02381:	39 de                	cmp    %ebx,%esi
+69c02383:	76 f1                	jbe    69c02376 <__execute_onexit_table+0x46>
+69c02385:	89 34 24             	mov    %esi,(%esp)
+69c02388:	e8 73 fe ff ff       	call   69c02200 <_free>
+69c0238d:	83 c4 10             	add    $0x10,%esp
+69c02390:	31 c0                	xor    %eax,%eax
+69c02392:	5b                   	pop    %ebx
+69c02393:	5e                   	pop    %esi
+69c02394:	5f                   	pop    %edi
+69c02395:	c3                   	ret    
+69c02396:	90                   	nop
+69c02397:	90                   	nop
+69c02398:	90                   	nop
+69c02399:	90                   	nop
+69c0239a:	90                   	nop
+69c0239b:	90                   	nop
+69c0239c:	90                   	nop
+69c0239d:	90                   	nop
+69c0239e:	90                   	nop
+69c0239f:	90                   	nop
+
+69c023a0 <___acrt_iob_func>:
+69c023a0:	8b 44 24 04          	mov    0x4(%esp),%eax
+69c023a4:	c1 e0 05             	shl    $0x5,%eax
+69c023a7:	03 05 60 81 c0 69    	add    0x69c08160,%eax
+69c023ad:	c3                   	ret    
+69c023ae:	90                   	nop
+69c023af:	90                   	nop
+
+69c023b0 <_realloc>:
+69c023b0:	ff 25 7c 81 c0 69    	jmp    *0x69c0817c
+69c023b6:	90                   	nop
+69c023b7:	90                   	nop
+
+69c023b8 <__unlock>:
+69c023b8:	ff 25 68 81 c0 69    	jmp    *0x69c08168
+69c023be:	90                   	nop
+69c023bf:	90                   	nop
+
+69c023c0 <__lock>:
+69c023c0:	ff 25 64 81 c0 69    	jmp    *0x69c08164
+69c023c6:	90                   	nop
+69c023c7:	90                   	nop
+
+69c023c8 <___report_error>:
+69c023c8:	53                   	push   %ebx
+69c023c9:	83 ec 18             	sub    $0x18,%esp
+69c023cc:	c7 04 24 02 00 00 00 	movl   $0x2,(%esp)
+69c023d3:	8d 5c 24 24          	lea    0x24(%esp),%ebx
+69c023d7:	e8 c4 ff ff ff       	call   69c023a0 <___acrt_iob_func>
+69c023dc:	c7 44 24 08 1b 00 00 	movl   $0x1b,0x8(%esp)
+69c023e3:	00 
+69c023e4:	89 44 24 0c          	mov    %eax,0xc(%esp)
+69c023e8:	c7 44 24 04 01 00 00 	movl   $0x1,0x4(%esp)
+69c023ef:	00 
+69c023f0:	c7 04 24 68 40 c0 69 	movl   $0x69c04068,(%esp)
+69c023f7:	e8 fc fd ff ff       	call   69c021f8 <_fwrite>
+69c023fc:	c7 04 24 02 00 00 00 	movl   $0x2,(%esp)
+69c02403:	e8 98 ff ff ff       	call   69c023a0 <___acrt_iob_func>
+69c02408:	8b 54 24 20          	mov    0x20(%esp),%edx
+69c0240c:	89 5c 24 08          	mov    %ebx,0x8(%esp)
+69c02410:	89 04 24             	mov    %eax,(%esp)
+69c02413:	89 54 24 04          	mov    %edx,0x4(%esp)
+69c02417:	e8 c4 fd ff ff       	call   69c021e0 <_vfprintf>
+69c0241c:	e8 ef fd ff ff       	call   69c02210 <_abort>
+69c02421:	90                   	nop
+69c02422:	90                   	nop
+69c02423:	90                   	nop
+69c02424:	66 90                	xchg   %ax,%ax
+69c02426:	66 90                	xchg   %ax,%ax
+69c02428:	66 90                	xchg   %ax,%ax
+69c0242a:	66 90                	xchg   %ax,%ax
+69c0242c:	66 90                	xchg   %ax,%ax
+69c0242e:	66 90                	xchg   %ax,%ax
+
+69c02430 <_register_frame_ctor>:
+69c02430:	e9 ab ef ff ff       	jmp    69c013e0 <___gcc_register_frame>
+69c02435:	90                   	nop
+69c02436:	90                   	nop
+69c02437:	90                   	nop
+69c02438:	90                   	nop
+69c02439:	90                   	nop
+69c0243a:	90                   	nop
+69c0243b:	90                   	nop
+69c0243c:	90                   	nop
+69c0243d:	90                   	nop
+69c0243e:	90                   	nop
+69c0243f:	90                   	nop
+
+69c02440 <__CTOR_LIST__>:
+69c02440:	ff                   	(bad)  
+69c02441:	ff                   	(bad)  
+69c02442:	ff                   	(bad)  
+69c02443:	ff                   	.byte 0xff
+
+69c02444 <.ctors.65535>:
+69c02444:	30 24 c0             	xor    %ah,(%eax,%eax,8)
+69c02447:	69                   	.byte 0x69
+69c02448:	00 00                	add    %al,(%eax)
+	...
+
+69c0244c <__DTOR_LIST__>:
+69c0244c:	ff                   	(bad)  
+69c0244d:	ff                   	(bad)  
+69c0244e:	ff                   	(bad)  
+69c0244f:	ff 00                	incl   (%eax)
+69c02451:	00 00                	add    %al,(%eax)
+	...

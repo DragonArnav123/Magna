@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gllibs.hpp"
+#include <GLFW/glfw3.h>
 
 namespace Engine {
 enum class Keys {

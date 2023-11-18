@@ -1,9 +1,8 @@
-#define MAGNA_DLL_BUILD
+/* Implementation for Log struct */
 
-#include "std.hpp"
-#include "../dependencies/spdlog/include/spdlog/sinks/stdout_color_sinks.h"
+#include "common.hpp"
+#include <spdlog/sinks/stdout_color_sinks.h>
 #include "Log.hpp"
-#include "macros.hpp"
 
 namespace Magna {
 

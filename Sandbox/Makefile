@@ -13,7 +13,7 @@ LFLAGS = -L$(ENGINEDIR)/bin/Binaries
 LIBRARIES = -lMagna -lkernel32 -lgdi32 -luser32 -lopengl32
 CFLAGS = -std=c++2a -g -ggdb
 CFLAGS += $(INCLUDE)
-DEFINES = -DDEBUG
+DEFINES = -DDEBUG_BUILD
 SRCS = $(wildcard $(SRC)/*.cpp)
 HEADER = $(wildcard $(SRC)/*.hpp)
 OBJS = $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))

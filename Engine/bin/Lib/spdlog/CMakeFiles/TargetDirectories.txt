@@ -1,9 +1,0 @@
-E:/Krishna/Projects/CPP/Magna/Engine/bin/Lib/spdlog/CMakeFiles/spdlog.dir
-E:/Krishna/Projects/CPP/Magna/Engine/bin/Lib/spdlog/CMakeFiles/package.dir
-E:/Krishna/Projects/CPP/Magna/Engine/bin/Lib/spdlog/CMakeFiles/package_source.dir
-E:/Krishna/Projects/CPP/Magna/Engine/bin/Lib/spdlog/CMakeFiles/edit_cache.dir
-E:/Krishna/Projects/CPP/Magna/Engine/bin/Lib/spdlog/CMakeFiles/rebuild_cache.dir
-E:/Krishna/Projects/CPP/Magna/Engine/bin/Lib/spdlog/CMakeFiles/list_install_components.dir
-E:/Krishna/Projects/CPP/Magna/Engine/bin/Lib/spdlog/CMakeFiles/install.dir
-E:/Krishna/Projects/CPP/Magna/Engine/bin/Lib/spdlog/CMakeFiles/install/local.dir
-E:/Krishna/Projects/CPP/Magna/Engine/bin/Lib/spdlog/CMakeFiles/install/strip.dir

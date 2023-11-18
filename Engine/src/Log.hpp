@@ -1,8 +1,7 @@
 #pragma once
 
-#include "std.hpp"
-#include "macros.hpp"
-#include "../dependencies/spdlog/include/spdlog/spdlog.h"
+#include "common.hpp"
+#include <spdlog/spdlog.h>
 
 namespace Magna {
 

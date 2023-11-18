@@ -1,0 +1,7 @@
+E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/Magna.dir
+E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/edit_cache.dir
+E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/rebuild_cache.dir
+E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/list_install_components.dir
+E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/install.dir
+E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/install/local.dir
+E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/install/strip.dir

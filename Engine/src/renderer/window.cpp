@@ -1,11 +1,6 @@
-#define MAGNA_DLL_BUILD
-
 #include "window.hpp"
 #include "../Log.hpp"
-#include <gllibs.hpp>
-#include <std.hpp>
 #include <GLFW/glfw3.h>
-
 
 namespace Magna { namespace Window {
 using namespace Math;

@@ -1,8 +1,6 @@
 #pragma once
 
-#include "../macros.hpp"
-#include "../std.hpp"
-#include "../gllibs.hpp"
+#include "../common.hpp"
 #include "../math.hpp"
 #include "../Keys.hpp"
 

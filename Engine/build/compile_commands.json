@@ -1,0 +1,17 @@
+[
+{
+  "directory": "E:/Krishna/Projects/CPP/Magna/Engine/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\G__~1.EXE -DDEBUG_BUILD -DINC_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/include\\\" -DLIB_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/libraries\\\" -DMAGNA_API=__declspec(__dllexport__) -DMAGNA_DLL_BUILD -DMagna_EXPORTS -DRESOURCES_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/src/res\\\" -DSOURCE_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/src\\\" -DWINDOWS @CMakeFiles/Magna.dir/includes_CXX.rsp -std=c++2a -g -ggdb -Wall -Winvalid-pch -x c++-header -include E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/Magna.dir/cmake_pch.hxx -o CMakeFiles\\Magna.dir\\cmake_pch.hxx.gch -c E:\\Krishna\\Projects\\CPP\\Magna\\Engine\\build\\CMakeFiles\\Magna.dir\\cmake_pch.hxx.cxx",
+  "file": "E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/Magna.dir/cmake_pch.hxx.cxx"
+},
+{
+  "directory": "E:/Krishna/Projects/CPP/Magna/Engine/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\G__~1.EXE -DDEBUG_BUILD -DINC_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/include\\\" -DLIB_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/libraries\\\" -DMAGNA_API=__declspec(__dllexport__) -DMAGNA_DLL_BUILD -DMagna_EXPORTS -DRESOURCES_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/src/res\\\" -DSOURCE_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/src\\\" -DWINDOWS @CMakeFiles/Magna.dir/includes_CXX.rsp -std=c++2a -g -ggdb -Wall -Winvalid-pch -include E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/Magna.dir/cmake_pch.hxx -o CMakeFiles\\Magna.dir\\src\\Log.cpp.obj -c E:\\Krishna\\Projects\\CPP\\Magna\\Engine\\src\\Log.cpp",
+  "file": "E:/Krishna/Projects/CPP/Magna/Engine/src/Log.cpp"
+},
+{
+  "directory": "E:/Krishna/Projects/CPP/Magna/Engine/build",
+  "command": "C:\\PROGRA~2\\MINGW-~1\\I686-8~1.0-P\\mingw32\\bin\\G__~1.EXE -DDEBUG_BUILD -DINC_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/include\\\" -DLIB_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/libraries\\\" -DMAGNA_API=__declspec(__dllexport__) -DMAGNA_DLL_BUILD -DMagna_EXPORTS -DRESOURCES_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/src/res\\\" -DSOURCE_DIR=\\\"E:/Krishna/Projects/CPP/Magna/Engine/src\\\" -DWINDOWS @CMakeFiles/Magna.dir/includes_CXX.rsp -std=c++2a -g -ggdb -Wall -Winvalid-pch -include E:/Krishna/Projects/CPP/Magna/Engine/build/CMakeFiles/Magna.dir/cmake_pch.hxx -o CMakeFiles\\Magna.dir\\src\\renderer\\window.cpp.obj -c E:\\Krishna\\Projects\\CPP\\Magna\\Engine\\src\\renderer\\window.cpp",
+  "file": "E:/Krishna/Projects/CPP/Magna/Engine/src/renderer/window.cpp"
+}
+]
